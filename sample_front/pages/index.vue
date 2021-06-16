@@ -28,7 +28,7 @@
         },
         methods: {
             async getAdd() {
-                const result = await this.$axios.$get("http://icanhazip.com");
+                const result = await this.$axios.$get("https://icanhazip.com");
                 this.result = result;
             },
         },
