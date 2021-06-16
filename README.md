@@ -8,3 +8,13 @@ What is an API, really?
 
 ## Next Steps
 [] create tf config for get_sum and get_rounded
+
+
+## PoC Example Ideas
+- basic arithmetic
+- text tokenization using spacy
+- image classification using yolo
+    - provide link to image
+    - pipeline:
+        - extract image
+        - classify image
