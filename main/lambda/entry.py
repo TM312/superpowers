@@ -6,24 +6,9 @@ log = logging.getLogger(__name__)
 
 def lambda_handler(event, context):
 
-    params = {
-        'data': [1,2,3,4],
-        'services': [
-            {
-                'position':0,
-                'name': 'get_sum',
-            },
-            {
-                'position':1,
-                'name': 'get_rounded',
-            }
-        ],
-        'visualization': None
-    }
-
-    data = params['data']
-    service_list = params['services']
-    visualization = params['visualization']
+    data = event['data']
+    service_list = event['services']
+    visualization = event['visualization']
 
     # # retrieve data
     # if not isinstance(data, list)
