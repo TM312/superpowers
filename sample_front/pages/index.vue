@@ -8,6 +8,11 @@
                 <span @click="getAdd()" class="button--green"> Get IP </span>
                 <span>{{ result ? result : "Not called yet" }}</span>
             </div>
+            <div>
+                params = { 'data': [1,2,3,4], 'services': [ { 'position':0,
+                'name': 'get_sum', }, { 'position':1, 'name': 'get_rounded', }
+                ], 'visualization': None, 'meta': { 'fields': {} } }
+            </div>
         </div>
     </div>
 </template>
