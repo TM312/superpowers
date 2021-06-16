@@ -5,7 +5,7 @@
             <br />
             <h1 class="title">Welcome to Superpowers</h1>
             <br />
-            <h3>What is an API, really?</h3>
+            <br />
             <div class="links">
                 <span @click="getAdd()" class="button--green"> Get IP </span>
                 <span>{{ result ? result : "Not called yet" }}</span>
