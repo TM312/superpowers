@@ -36,13 +36,12 @@
         },
         methods: {
             async getAdd() {
-                const result = await this.$axios.$get("https://icanhazip.com");
-                this.result = result;
+                this.result = await this.$axios.$get("https://icanhazip.com");
             },
         },
         computed: {
             testHtml() {
-                return "<h2 class='subtitle'>Welcome to The Inner Component</h2>";
+                return `<h2 class='subtitle'>Welcome to The Inner Component</h2><br><p>We can also add the IP, once we get it, see: ${this.result}</p>`;
             },
         },
     };
