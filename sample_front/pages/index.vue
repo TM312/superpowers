@@ -11,9 +11,17 @@
                 <span>{{ result ? result : "Not called yet" }}</span>
             </div>
             <div>
-                params = { 'data': [1,2,3,4], 'services': [ { 'position':0,
-                'name': 'get_sum', }, { 'position':1, 'name': 'get_rounded', }
-                ], 'visualization': None, 'meta': { 'fields': {} } }
+                params = { 'data': [1,2,3,4], 'service_pipeline': [ {
+                'position':0, 'name': 'get_sum', }, { 'position':1, 'name':
+                'get_rounded', } ], 'visualization': None, 'meta': { 'fields':
+                {} } }
+            </div>
+            <br />
+            <br />
+            <div>
+                Below is generated HTML:<br />
+                <br />
+                <render-component :html="testHtml" />
             </div>
         </div>
     </div>
@@ -30,6 +38,11 @@
             async getAdd() {
                 const result = await this.$axios.$get("https://icanhazip.com");
                 this.result = result;
+            },
+        },
+        computed: {
+            testHtml() {
+                return "<h2 class='subtitle'>Welcome to The Inner Component</h2>";
             },
         },
     };

@@ -44,5 +44,8 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extend(config, { isClient }) {
+      config.resolve.alias['vue$'] = 'vue/dist/vue.esm.js'
+    }
   }
 }
