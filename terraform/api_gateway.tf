@@ -1,7 +1,7 @@
 resource "aws_lambda_permission" "apigw" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.lambda_entry.function_name
+  function_name = module.lambda_functions.lambda_entry_function_name
   principal     = "apigateway.amazonaws.com"
 
   # The "/*/*" portion grants access from any method on any resource
@@ -11,7 +11,7 @@ resource "aws_lambda_permission" "apigw" {
 
 
 resource "aws_api_gateway_rest_api" "api_gateway" {
-  name        = "`invoke_lambda_policy_${env}`"
+  name        = "`invoke_lambda_policy_${var.env}`"
   description = "API Gateway to Lambda Entry function"
 }
 
@@ -35,24 +35,24 @@ resource "aws_api_gateway_integration" "lambda" {
 
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-  uri                     = aws_lambda_function.lambda_entry.invoke_arn
+  uri                     = module.lambda_functions.lambda_entry_invoke_arn
 }
 
 resource "aws_api_gateway_method" "proxy_root" {
-  rest_api_id   = aws_api_gateway_rest_api.example.id
-  resource_id   = aws_api_gateway_rest_api.example.root_resource_id
+  rest_api_id   = aws_api_gateway_rest_api.api_gateway.id
+  resource_id   = aws_api_gateway_rest_api.api_gateway.root_resource_id
   http_method   = "ANY"
   authorization = "NONE"
 }
 
 resource "aws_api_gateway_integration" "lambda_root" {
-  rest_api_id = aws_api_gateway_rest_api.example.id
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
   resource_id = aws_api_gateway_method.proxy_root.resource_id
   http_method = aws_api_gateway_method.proxy_root.http_method
 
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-  uri                     = aws_lambda_function.lambda_entry.invoke_arn
+  uri                     = module.lambda_functions.lambda_entry_invoke_arn
 }
 
 resource "aws_api_gateway_deployment" "test_deployment" {
@@ -61,6 +61,6 @@ resource "aws_api_gateway_deployment" "test_deployment" {
     aws_api_gateway_integration.lambda_root,
   ]
 
-  rest_api_id = aws_api_gateway_rest_api.lambda_entry.id
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
   stage_name  = "test"
 }

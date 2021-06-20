@@ -1,3 +1,4 @@
+
 # Role and Permissions
 resource "aws_iam_role" "lambda_invoke_lambda_role" {
   name = "invoke_lambda_role"
@@ -41,38 +42,16 @@ resource "aws_iam_policy" "lambda_invoke_lambda_policy" {
             "Effect": "Allow",
             "Action": [
                 "lambda:InvokeFunction",
-                "lambda:InvokeAsync",
+                "lambda:InvokeAsync"
             ],
-            "Resource": [
-                "arns of all other lambda functions",
-            ]
-        },
+            "Resource": "*"
+        }
     ]
 }
 EOF
 }
 
-resource "aws_iam_role_policy_attachment" "lambda_s3_put_transcribe_role_policy_attach" {
-  role       = aws_iam_role.lambda_invoke_lambda_policy.name
+resource "aws_iam_role_policy_attachment" "lambda_invoke_lambda_role_policy_attach" {
+  role       = aws_iam_role.lambda_invoke_lambda_role.name
   policy_arn = aws_iam_policy.lambda_invoke_lambda_policy.arn
-}
-
-# AWSLambda
-data "archive_file" "zip_lambda_function_entry" {
-  type        = "zip"
-  source_file = "../../main/lambda/entry.py"
-  output_path = "../../main/lambda/entry.zip"
-}
-
-resource "aws_lambda_function" "lambda_entry" {
-  filename         = "../../main/lambda/entry.zip"
-  source_code_hash = data.archive_file.zip_lambda_function_entry.output_base64sha256
-  function_name    = "lambda_entry_${var.env}"
-  role             = aws_iam_role.lambda_invoke_lambda_policy.arn
-  handler          = "entry.lambda_handler"
-  runtime          = "python3.8"
-
-  environment {
-    variables = {}
-  }
 }
