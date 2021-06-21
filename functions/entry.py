@@ -39,7 +39,7 @@ def lambda_handler(event, context):
 
 # data_dict = {
 #     'get_add': 'arn:aws:lambda:eu-west-1:890277245818:function:get_add',
-#     'get_rounded': 'arn:aws:lambda:eu-west-1:890277245818:function:get_rounded',
+#     'get_round': 'arn:aws:lambda:eu-west-1:890277245818:function:get_round',
 # }
 
 # def _data_handler(data: dict) -> dict:
@@ -55,7 +55,7 @@ def lambda_handler(event, context):
 
 service_dict = {
     'get_add': 'arn:aws:lambda:eu-west-1:890277245818:function:get_add',
-    'get_rounded': 'arn:aws:lambda:eu-west-1:890277245818:function:get_rounded',
+    'get_round': 'arn:aws:lambda:eu-west-1:890277245818:function:get_round',
 }
 
 def _service_handler(data_list: list, service_list: list):
