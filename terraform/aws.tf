@@ -13,7 +13,9 @@ module "lambda_functions" {
   source = "./modules/lambda-functions"
 
   lambda_invoke_lambda_role_name = module.roles_permissions.lambda_invoke_lambda_role_name
+  lambda_invoke_lambda_role_arn = module.roles_permissions.lambda_invoke_lambda_role_arn
   lambda_execute_role_name = module.roles_permissions.lambda_execute_role_name
+  lambda_execute_role_arn = module.roles_permissions.lambda_execute_role_arn
   env = var.env
 }
 

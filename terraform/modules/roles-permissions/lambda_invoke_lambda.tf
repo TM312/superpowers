@@ -3,20 +3,18 @@
 resource "aws_iam_role" "lambda_invoke_lambda_role" {
   name = "invoke_lambda_role"
 
-  assume_role_policy = <<EOF
-  {
-    "Version": "2012-10-17",
-    "Statement": [
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
       {
-        "Action": "sts:AssumeRole",
-        "Principal": {
-          "Service": "lambda.amazonaws.com"
-        },
-        "Effect": "Allow"
-      }
+        Action = "sts:AssumeRole"
+        Principal = {
+          Service = "lambda.amazonaws.com"
+        }
+        Effect = "Allow"
+      },
     ]
-  }
-  EOF
+  })
 }
 
 resource "aws_iam_policy" "lambda_invoke_lambda_policy" {

@@ -14,3 +14,14 @@ variable "lambda_execute_role_name" {
   type = string
   description = "Role name of the execute lambda functions"
 }
+
+# IAM roles and permissions
+variable "lambda_invoke_lambda_role_arn" {
+  type = string
+  description = "Role ARN of the invoke lambda functions"
+}
+
+variable "lambda_execute_role_arn" {
+  type = string
+  description = "Role ARN of the execute lambda functions"
+}
