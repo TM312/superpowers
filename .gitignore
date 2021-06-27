@@ -168,6 +168,8 @@ pythonenv*
 # mkdocs documentation
 /site
 
+functions/**/*.zip
+
 # mypy
 .mypy_cache/
 .dmypy.json
