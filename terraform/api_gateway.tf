@@ -6,12 +6,12 @@ resource "aws_lambda_permission" "apigw" {
 
   # The "/*/*" portion grants access from any method on any resource
   # within the API Gateway REST API.
-  source_arn = "${aws_api_gateway_rest_api.api_gateway.execution_arn}/POST/*"
+  source_arn = "${aws_api_gateway_rest_api.api_gateway.execution_arn}/*/*"
 }
 
 
 resource "aws_api_gateway_rest_api" "api_gateway" {
-  name        = "`invoke_lambda_policy_${var.env}`"
+  name        = "${var.project_name}_api_gateway_${var.env}"
   description = "API Gateway to Lambda Entry function"
 }
 
@@ -62,5 +62,5 @@ resource "aws_api_gateway_deployment" "test_deployment" {
   ]
 
   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
-  stage_name  = "test"
+  stage_name  = var.env
 }
