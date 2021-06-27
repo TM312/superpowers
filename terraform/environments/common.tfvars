@@ -1,1 +1,1 @@
-project_id="superpowers"
+project_name="superpowers"

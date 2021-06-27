@@ -1,5 +1,5 @@
 # GENERAL
-variable "project_id" {
+variable "project_name" {
   type = string
 }
 
