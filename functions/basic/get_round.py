@@ -5,6 +5,7 @@ import math
 log = logging.getLogger()
 log.setLevel(logging.INFO)
 
+
 def lambda_handler(event, context) -> Union[int, float]:
     """
     rounds value
@@ -16,10 +17,12 @@ def lambda_handler(event, context) -> Union[int, float]:
 
     """
 
-    if not 'data' in event:
+    if not "data" in event:
+        log.error("Data missing")
         return False
     else:
-        data = event['data']
+        data = event["data"]
+
     if isinstance(data, list):
         try:
             data = [_perform_round(el, **event) for el in data]
@@ -39,27 +42,24 @@ def lambda_handler(event, context) -> Union[int, float]:
         return False
 
 
-
-
 def _perform_round(element: Union[int, float], **kwargs):
-    if 'roundType' in kwargs:
-            if kwargs['roundType'] == 'ceil':
-                value = math.ceil(value)
+    if "roundType" in kwargs:
+        if kwargs["roundType"] == "ceil":
+            value = math.ceil(element)
 
-            elif kwargs['roundType'] == 'floor'::
-                value = math.ceil(value)
+        elif kwargs["roundType"] == "floor":
+            value = math.ceil(element)
 
-            elif kwargs['roundType'] == 'truncate'::
-                value = truncate(value)
+        elif kwargs["roundType"] == "truncate":
+            value = truncate(element)
 
-            else:
-                value = round(value, kwargs.get('dec_places', 2))
+        else:
+            value = round(element, kwargs.get("dec_places", 2))
 
-        elif 'dec_places' in kwargs:
-            value = round(value, kwargs['dec_places'])
+    elif "dec_places" in kwargs:
+        value = round(element, kwargs["dec_places"])
 
+    elif isinstance(element, float):
+        value = round(element, kwargs.get("dec_places", 2))
 
-        elif isinstance(value, float):
-            value = round(value, kwargs.get('dec_places', 2))
-
-        return value
+    return value

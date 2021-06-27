@@ -1,24 +1,29 @@
 from typing import Union
 import logging
-import math
+import json
 
 log = logging.getLogger()
 log.setLevel(logging.INFO)
 
-def get_sum(**kwargs: list) -> Union[int, float]:
+
+def lambda_handler(event, context) -> Union[int, float]:
     """
     gets sum of list of values
 
-    kwargs
+    event
     - data: list of floats or integers to be summed
 
     """
-    if not 'data' in kwargs:
+
+    if not "data" in event:
+        log.error("Data missing")
         return False
+
     else:
-        data = kwargs['data']
+        data = event["data"]
 
     if not isinstance(data, list):
+        log.error("data", json.dumps(data))
         return False
 
     try:
