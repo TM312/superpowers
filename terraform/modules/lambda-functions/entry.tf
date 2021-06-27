@@ -12,12 +12,10 @@ resource "aws_lambda_function" "lambda_entry" {
   role             = var.lambda_invoke_lambda_role_arn
   handler          = "entry.lambda_handler"
   runtime          = "python3.8"
-}
 
-
-# CloudWatch
-resource "aws_cloudwatch_log_group" "lambda_entry_log_group" {
-  name = "/aws/lambda/${aws_lambda_function.lambda_entry.function_name}"
-
-  retention_in_days = 30
+  environment = {
+    variables = {
+      env = var.env
+    }
+  }
 }
