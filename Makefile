@@ -13,7 +13,7 @@ tf-init:
 
 #ACTION default value is plan --> can also run apply, destroy
 ACTION?=plan
-tf-x:
+tfx:
 	cd terraform && \
 	terraform workspace select $(ENV) && \
 	terraform ${ACTION} \
