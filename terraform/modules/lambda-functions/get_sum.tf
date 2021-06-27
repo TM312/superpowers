@@ -13,3 +13,10 @@ resource "aws_lambda_function" "lambda_get_sum" {
   handler          = "get_sum.lambda_handler"
   runtime          = "python3.8"
 }
+
+# CloudWatch
+resource "aws_cloudwatch_log_group" "lambda_log_group" {
+  name = "/aws/lambda/${aws_lambda_function.lambda_get_sum.function_name}"
+
+  retention_in_days = 30
+}
