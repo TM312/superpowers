@@ -8,11 +8,10 @@ log.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
 
-    return {'body':'Hello, world!'}
 
-#     data = event['data']
-#     service_list = event['services']
-#     visualization = event['visualization']
+    data = event.get('data')
+    service_list = event.get('services')
+    visualization = event.get('visualization')
 
 #     # # retrieve data
 #     # if not isinstance(data, list)
@@ -21,67 +20,78 @@ def lambda_handler(event, context):
 #     #     except Exception as e:
 #     #         raise e
 
-#     # apply service
-#     if service_list is not None:
-#         try:
-#             data = _service_handler(data, service_list)
-#         except Exception as e:
-#             log.error(e)
-#             raise e
+    # apply service
+    if service_list is not None:
+        try:
+            data = _service_handler(data, service_list)
+        except Exception as e:
+            log.error(e)
+            raise e
+
+        return {
+            "statusCode": 200,
+            "headers": {
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+            },
+            "body": "\"Hello from Lambda!\""
+        }
 
 
-#     # # apply visualization
-#     #  if visualization is not None:
-#     #     try:
-#     #         data_formatted = _visualization_handler(data, visualization)
-#     #     except Exception as e:
-#     #         raise e
+
+    # # apply visualization
+    #  if visualization is not None:
+    #     try:
+    #         data_formatted = _visualization_handler(data, visualization)
+    #     except Exception as e:
+    #         raise e
 
 
 
-# # data_dict = {
-# #     'get_add': 'arn:aws:lambda:eu-west-1:890277245818:function:get_add',
-# #     'get_round': 'arn:aws:lambda:eu-west-1:890277245818:function:get_round',
-# # }
-
-# # def _data_handler(data: dict) -> dict:
-
-# #     response = client.invoke(
-# #         FunctionName = 'arn:aws:lambda:eu-west-1:890277245818:function:DataHandler',
-# #         InvocationType = 'RequestResponse',
-# #         Payload = json.dumps(inputParams)
-# #     )
-
-# #     data = json.load(response['Payload'])
-# # #
-
-# service_dict = {
-#     'get_add': 'arn:aws:lambda:eu-west-1:890277245818:function:get_add',
-#     'get_round': 'arn:aws:lambda:eu-west-1:890277245818:function:get_round'
+# data_dict = {
+#     'get_sum': 'arn:aws:lambda:eu-west-1:890277245818:function:get_sum',
+#     'get_round': 'arn:aws:lambda:eu-west-1:890277245818:function:get_round',
 # }
 
-# def _service_handler(data_list: list, service_list: list):
+# def _data_handler(data: dict) -> dict:
 
-#     service_list = sorted(service_list, key = lambda i: i['position'])
-#     for service in service_list:
-#         if service.get('name') in service_dict.keys():
-#            res = client.invoke(
-#                 FunctionName = service_dict[service['name']],
-#                 InvocationType = 'RequestResponse',
-#                 Payload = data_list
-#             )
+#     response = client.invoke(
+#         FunctionName = 'arn:aws:lambda:eu-west-1:890277245818:function:DataHandler',
+#         InvocationType = 'RequestResponse',
+#         Payload = json.dumps(inputParams)
+#     )
 
-#             data_list = json.load(res['Payload'])
-
-#             return data_list
-
-#         else:
-#             log.error(f'{service.get('name')} is not a valid service name.')
-#             raise
+#     data = json.load(response['Payload'])
 # #
 
+service_dict = {
+    'get_sum': f'arn:aws:lambda:ap-southeast-1:046111613375:function:lambda_get_sum_{env}',
+    'get_round': f'arn:aws:lambda:ap-southeast-1:046111613375:function:lambda_get_round_{env}'
+}
+
+def _service_handler(data_list: list, service_list: list):
+
+    service_list = sorted(service_list, key = lambda i: i['position'])
+    for service in service_list:
+        if service.get('name') in service_dict.keys():
+           res = client.invoke(
+                FunctionName = service_dict[service['name']],
+                InvocationType = 'RequestResponse',
+                Payload = data_list
+            )
+
+            data_list = json.load(res['Payload'])
+
+            return data_list
+
+        else:
+            log.error(f'{service.get('name')} is not a valid service name.')
+            raise
+#
+
 # # visualization_dict = {
-# #     'get_add': get_add,
+# #     'get_sum': get_sum,
 # #     'get_round': get_round,
 # # }
 
