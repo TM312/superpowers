@@ -7,8 +7,10 @@
             <br />
             <br />
             <div class="links">
-                <span @click="getAdd()" class="button--green"> Get IP </span>
-                <span>{{ result ? result : "Not called yet" }}</span>
+                <span @click="getAdd()" class="button--green">
+                    Get API Response
+                </span>
+                <span>{{ result ? "" : "Not called yet" }}</span>
             </div>
             <div>
                 params = { 'data': [1,2,3,4], 'service_pipeline': [ {
@@ -36,12 +38,24 @@
         },
         methods: {
             async getAdd() {
-                this.result = await this.$axios.$get();
+                const params = {
+                    data: [1, 2, 3, 4],
+                    services: [
+                        {
+                            position: 0,
+                            name: "get_sum",
+                        },
+                        { position: 1, name: "get_rounded" },
+                    ],
+                    visualization: null,
+                    meta: { fields: {} },
+                };
+                this.result = await this.$axios.$post("", params);
             },
         },
         computed: {
             testHtml() {
-                return `<h2 class='subtitle'>Welcome to The Inner Component</h2><br><p>We can also add the IP, once we get it, see: ${this.result}</p>`;
+                return `<h2 class='subtitle'>We render the html-preformatted result <i>${this.result}</i> from the response directly after calling the API</h2></p>`;
             },
         },
     };

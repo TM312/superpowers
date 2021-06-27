@@ -41,7 +41,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'https://gwob184fc2.execute-api.ap-southeast-1.amazonaws.com/dev',
+    baseURL: 'https://gwob184fc2.execute-api.ap-southeast-1.amazonaws.com/prod',
     proxyHeaders: false,
     credentials: false
   },
