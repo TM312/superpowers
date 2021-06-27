@@ -1,5 +1,5 @@
 resource "aws_lambda_permission" "apigw" {
-  statement_id  = "AllowAPIGatewayInvoke"
+  statement_id  = "AllowExecutionFromAPIGateway" #"AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
   function_name = module.lambda_functions.lambda_entry_function_name
   principal     = "apigateway.amazonaws.com"
