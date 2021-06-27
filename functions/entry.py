@@ -1,6 +1,7 @@
 import boto3
 import logging
 import json
+import os
 
 client = boto3.client("lambda")
 
@@ -8,8 +9,8 @@ log = logging.getLogger()
 log.setLevel(logging.INFO)
 
 service_dict = {
-    "get_sum": f"arn:aws:lambda:ap-southeast-1:046111613375:function:lambda_get_sum_{env}",
-    "get_round": f"arn:aws:lambda:ap-southeast-1:046111613375:function:lambda_get_round_{env}",
+    "get_sum": f"arn:aws:lambda:ap-southeast-1:046111613375:function:lambda_get_sum_{os.getenv('env')}",
+    "get_round": f"arn:aws:lambda:ap-southeast-1:046111613375:function:lambda_get_round_{os.getenv('env')}",
 }
 
 
