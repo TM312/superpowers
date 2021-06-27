@@ -13,7 +13,7 @@ resource "aws_lambda_function" "lambda_entry" {
   handler          = "entry.lambda_handler"
   runtime          = "python3.8"
 
-  environment = {
+  environment {
     variables = {
       env = var.env
     }
