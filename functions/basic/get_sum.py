@@ -2,7 +2,8 @@ from typing import Union
 import logging
 import math
 
-log = logging.getLogger(__name__)
+log = logging.getLogger()
+log.setLevel(logging.INFO)
 
 def get_sum(**kwargs: list) -> Union[int, float]:
     """

@@ -2,8 +2,8 @@ from typing import Union
 import logging
 import math
 
-log = logging.getLogger(__name__)
-
+log = logging.getLogger()
+log.setLevel(logging.INFO)
 
 def lambda_handler(event, context) -> Union[int, float]:
     """
