@@ -36,7 +36,7 @@
         },
         methods: {
             async getAdd() {
-                this.result = await this.$axios.$get("https://icanhazip.com");
+                this.result = await this.$axios.$get();
             },
         },
         computed: {
