@@ -13,10 +13,9 @@
                 <span>{{ result ? "" : "Not called yet" }}</span>
             </div>
             <div>
-                params = { 'data': [1,2,3,4], 'service_pipeline': [ {
-                'position':0, 'name': 'get_sum', }, { 'position':1, 'name':
-                'get_rounded', } ], 'visualization': None, 'meta': { 'fields':
-                {} } }
+                params =
+                {"data":[1,2.2,3,4],"services":[{"position":0,"name":"get_sum"},{"position":1,"name":"get_round"}]},
+                'visualization': None, 'meta': { 'fields': {} } }
             </div>
             <br />
             <br />
@@ -38,19 +37,27 @@
         },
         methods: {
             async getAdd() {
-                const params = {
+                const data = {
                     data: [1, 2, 3, 4],
                     services: [
                         {
                             position: 0,
                             name: "get_sum",
                         },
-                        { position: 1, name: "get_rounded" },
+                        { position: 1, name: "get_round" },
                     ],
                     visualization: null,
                     meta: { fields: {} },
                 };
-                this.result = await this.$axios.$post("", params);
+                //this.result = await this.$axios.$post("", data);
+                // post request including data
+                this.result = await this.$axios.post("", {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Access-Control-Allow-Origin": "*",
+                    },
+                    data: data,
+                });
             },
         },
         computed: {
