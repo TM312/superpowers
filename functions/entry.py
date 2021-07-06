@@ -13,19 +13,35 @@ service_dict = {
     "get_round": f"arn:aws:lambda:ap-southeast-1:046111613375:function:lambda_get_round_{os.getenv('env')}",
 }
 
-CORS = "*" if os.getenv("env") != "prod" else "https://festive-noyce-66178c.netlify.app"
+CORS = (
+    "*"  # if os.getenv("env") != "prod" else "https://festive-noyce-66178c.netlify.app"
+)
 
 
 def lambda_handler(event, context):
 
-    request_body = json.loads(event["body"])
+    if event["httpMethod"] == "OPTIONS":
+        return {
+            "statusCode": 200,
+            "headers": {
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Origin": CORS,
+                "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+            },
+        }
 
-    data = request_body["data"]
-    service_list = request_body["services"]
+    data = {}
+
+    request_body = (
+        json.loads(event.get("body")) if event.get("body") is not None else None
+    )
+
+    if request_body is not None:
+        data = request_body.get("data", {})
+        service_list = request_body.get("services", {})
 
     # visualization = event.get("visualization")
 
-    # log.error("service_list:", service_list)
     # # retrieve data
     # if not isinstance(data, list):
     #     try:
