@@ -40,8 +40,7 @@ def lambda_handler(event, context):
     if request_body is not None:
         data = request_body["data"].get("data", [])
         services = request_body["data"].get("services", {})
-
-    # visualization = event.get("visualization")
+        visualization = request_body["data"].get("visualization", {})
 
     # # retrieve data
     # if not isinstance(data, list):
@@ -59,6 +58,14 @@ def lambda_handler(event, context):
             log.error(e)
             raise e
 
+    # apply visualization
+    if len(visualization.keys()) > 0:
+        try:
+            parent_element = _visualization_handler(visualization)
+            data = f"<{ parent_element }>{json.dumps(data[0])}</{ parent_element }>"
+        except Exception as e:
+            raise e
+
     return {
         "statusCode": 200,
         "headers": {
@@ -66,15 +73,8 @@ def lambda_handler(event, context):
             "Access-Control-Allow-Origin": CORS,
             "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
         },
-        "body": f"<code class='bg-gray-800 px-2'>{json.dumps(data[0])}</code>",
+        "body": data,
     }
-
-    # # apply visualization
-    #  if visualization is not None:
-    #     try:
-    #         data_formatted = _visualization_handler(data, visualization)
-    #     except Exception as e:
-    #         raise e
 
 
 # def _data_handler(data: dict, inputParams: dict) -> dict:
@@ -120,20 +120,7 @@ def _service_handler(data: list, services: list):
     return data
 
 
-#
+def _visualization_handler(visualization: dict) -> str:
 
-# # visualization_dict = {
-# #     'get_sum': get_sum,
-# #     'get_round': get_round,
-# # }
-
-# # def _visualization_handler(data, visualization):
-
-# #     params = event['data']
-
-# #     if params.get('name') in service_dict.keys():
-# #         name = params.get('name')
-# #         return service_dict[name](kwargs=params)
-
-# #     else: !!!
-# #         raise NotFound
+    if "renderType" in visualization and visualization["renderType"] == "basic":
+        return visualization.get("mainElement", "span")
