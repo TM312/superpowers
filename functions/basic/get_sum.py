@@ -1,4 +1,3 @@
-from typing import Union
 import logging
 import json
 
@@ -6,7 +5,7 @@ log = logging.getLogger()
 log.setLevel(logging.INFO)
 
 
-def lambda_handler(event, context) -> Union[int, float]:
+def lambda_handler(event, context) -> list:
     """
     gets sum of list of values
 
@@ -23,7 +22,7 @@ def lambda_handler(event, context) -> Union[int, float]:
 
     try:
         total = sum(data)
-        return total
+        return [total]
 
     except Exception as e:
         log.error(e)

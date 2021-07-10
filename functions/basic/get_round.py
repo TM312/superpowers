@@ -54,11 +54,6 @@ def _perform_round(element: Union[int, float], config):
         elif config["roundType"] == "truncate":
             value = int(element)
 
-        else:
-            value = round(element, 2)
-
         return value
 
-    else:
-        log.error("Round underspecified.")
-        return False
+    return round(element, 2)

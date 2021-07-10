@@ -37,8 +37,8 @@ def lambda_handler(event, context):
     )
 
     if request_body is not None:
-        data = request_body.get("data", {})
-        service_list = request_body.get("services", {})
+        data = request_body.get("data", [])
+        services = request_body.get("services", {})
 
     # visualization = event.get("visualization")
 
@@ -50,9 +50,9 @@ def lambda_handler(event, context):
     #         raise e
 
     # apply service
-    if service_list is not None:
+    if services is not None:
         try:
-            data = _service_handler(data, service_list)
+            data = _service_handler(data, services)
             log.error(data)
         except Exception as e:
             log.error(e)
@@ -88,20 +88,22 @@ def lambda_handler(event, context):
 #     return data
 
 
-def _service_handler(data_list: list, service_list: list):
+def _service_handler(data: list, services: list):
     try:
-        service_list = sorted(service_list, key=lambda i: i["position"])
+        services = sorted(services, key=lambda i: i["position"])
     except Exception as e:
         log.error(e)
 
-    for service in service_list:
+    for service in services:
+        name = service["name"]
+        config = service.get("config", {})
 
-        if service.get("name") in service_dict.keys():
+        if name in service_dict.keys():
 
             try:
-                payload = {"data": data_list, "config": service.get("config", {})}
+                payload = {"data": data, "config": config}
                 res = client.invoke(
-                    FunctionName=service_dict[service["name"]],
+                    FunctionName=service_dict[name],
                     InvocationType="RequestResponse",
                     Payload=json.dumps(payload),
                 )
@@ -109,12 +111,12 @@ def _service_handler(data_list: list, service_list: list):
                 log.error(e)
                 raise e
 
-            data_list = json.loads(res.get("Payload").read())
-
-            return data_list
+            data: list = json.loads(res.get("Payload").read())
 
         else:
-            log.error(f"{ service['name']} is not a valid service name.")
+            log.error(f"{ name } is not a valid service name.")
+
+    return data
 
 
 #
