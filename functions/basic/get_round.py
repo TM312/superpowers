@@ -12,20 +12,18 @@ def lambda_handler(event, context) -> Union[int, float]:
 
     event
     - data: data
-    - dec_places: integer, default 2, number of digits for rounding
-    - roundType: string, indicates rounding type
+    – config:
+        - decPlaces: integer, default 2, number of digits for rounding
+        - roundType: string, indicates rounding type
 
     """
 
-    if not "data" in event:
-        log.error("Data missing")
-        return False
-    else:
-        data = event["data"]
+    data = event["data"]
+    config = event["config"]
 
     if isinstance(data, list):
         try:
-            data = [_perform_round(el, **event) for el in data]
+            data = [_perform_round(el, config) for el in data]
             return data
 
         except Exception as e:
@@ -42,24 +40,25 @@ def lambda_handler(event, context) -> Union[int, float]:
         return False
 
 
-def _perform_round(element: Union[int, float], **kwargs):
-    if "roundType" in kwargs:
-        if kwargs["roundType"] == "ceil":
+def _perform_round(element: Union[int, float], config):
+    if "decPlaces" in config and isinstance(config["decPlaces"], int):
+        return round(element, config["decPlaces"])
+
+    if "roundType" in config and isinstance(config["roundType"], str):
+        if config["roundType"] == "ceil":
             value = math.ceil(element)
 
-        elif kwargs["roundType"] == "floor":
-            value = math.ceil(element)
+        elif config["roundType"] == "floor":
+            value = math.floor(element)
 
-        elif kwargs["roundType"] == "truncate":
-            value = truncate(element)
+        elif config["roundType"] == "truncate":
+            value = int(element)
 
         else:
-            value = round(element, kwargs.get("dec_places", 2))
+            value = round(element, 2)
 
-    elif "dec_places" in kwargs:
-        value = round(element, kwargs["dec_places"])
+        return value
 
-    elif isinstance(element, float):
-        value = round(element, kwargs.get("dec_places", 2))
-
-    return value
+    else:
+        log.error("Round underspecified.")
+        return False

@@ -15,12 +15,7 @@ def lambda_handler(event, context) -> Union[int, float]:
 
     """
 
-    if not "data" in event:
-        log.error("Data missing")
-        return False
-
-    else:
-        data = event["data"]
+    data = event["data"]
 
     if not isinstance(data, list):
         log.error("data", json.dumps(data))

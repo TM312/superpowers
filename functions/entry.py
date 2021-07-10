@@ -99,7 +99,7 @@ def _service_handler(data_list: list, service_list: list):
         if service.get("name") in service_dict.keys():
 
             try:
-                payload = {"data": data_list}
+                payload = {"data": data_list, "config": service.get("config", {})}
                 res = client.invoke(
                     FunctionName=service_dict[service["name"]],
                     InvocationType="RequestResponse",
