@@ -30,6 +30,7 @@ Temporary Items
 ### Nuxtjs ###
 # dependencies
 node_modules
+*.zip
 
 # logs
 npm-debug.log
