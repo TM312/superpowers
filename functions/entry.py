@@ -30,15 +30,16 @@ def lambda_handler(event, context):
             },
         }
 
-    data = {}
+    data = []
+    services = []
 
     request_body = (
         json.loads(event.get("body")) if event.get("body") is not None else None
     )
 
     if request_body is not None:
-        data = request_body.get("data", [])
-        services = request_body.get("services", {})
+        data = request_body["data"].get("data", [])
+        services = request_body["data"].get("services", {})
 
     # visualization = event.get("visualization")
 
@@ -65,7 +66,7 @@ def lambda_handler(event, context):
             "Access-Control-Allow-Origin": CORS,
             "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
         },
-        "body": json.dumps(data),
+        "body": f"<code class='bg-gray-800 px-2'>{json.dumps(data[0])}</code>",
     }
 
     # # apply visualization
