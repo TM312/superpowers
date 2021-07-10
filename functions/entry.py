@@ -62,7 +62,8 @@ def lambda_handler(event, context):
     if len(visualization.keys()) > 0:
         try:
             parent_element = _visualization_handler(visualization)
-            data = f"<{ parent_element }>{json.dumps(data[0])}</{ parent_element }>"
+            data = str(data[0]) if isinstance(data, list) else str(data)
+            data = f"<{ parent_element }>{data}</{ parent_element }>"
         except Exception as e:
             raise e
 
