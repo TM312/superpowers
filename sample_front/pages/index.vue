@@ -34,20 +34,20 @@
     export default {
         data() {
             return {
-                result: {},
+                result: "",
                 payload: {
                     data: [1.1, 2.2, 3.1],
                     services: [
-                        { position: 0, name: "get_sum" },
+                        { position: 1, name: "get_sum" },
                         {
-                            position: 1,
+                            position: 0,
                             name: "get_round",
                             config: {
-                                roundType: "floor",
+                                roundType: "ceil",
                             },
                         },
                     ],
-                    visualization: { renderType: "basic", mainElement: "i" },
+                    visualization: { renderType: "basic", mainElement: "h1" },
                 },
             };
         },
