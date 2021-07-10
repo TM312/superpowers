@@ -6,7 +6,7 @@ data "archive_file" "zip_lambda_function_entry" {
 }
 
 resource "aws_lambda_function" "lambda_entry" {
-  filename         = "${path.root}/../functions/entry.zip"
+  filename         = data.archive_file.zip_lambda_function_entry.output_path
   source_code_hash = data.archive_file.zip_lambda_function_entry.output_base64sha256
   function_name    = "lambda_entry_${var.env}"
   role             = var.lambda_invoke_lambda_role_arn
