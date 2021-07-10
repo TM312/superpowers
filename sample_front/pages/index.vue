@@ -10,20 +10,22 @@
                 <span @click="getAdd()" class="button--green">
                     Get API Response
                 </span>
-                <span>{{ result ? "" : "Not called yet" }}</span>
             </div>
-            <div>
-                params =
-                {"data":[1,2.2,3,4],"services":[{"position":0,"name":"get_sum"},{"position":1,"name":"get_round"}]},
-                'visualization': None, 'meta': { 'fields': {} } }
-            </div>
+
+            <h5>
+                Payload: { <br />
+                data: {{ payload.data }}, <br />
+                services: {{ payload.services }}, <br />
+                visualization: {{ payload.visualization }} <br />
+                }
+            </h5>
             <br />
             <br />
-            <div>
-                Below is generated HTML:<br />
-                <br />
-                <render-component :html="testHtml" />
-            </div>
+            <h2>
+                We render the html-preformatted result directly from the API
+                response
+            </h2>
+            <div>Result: <render-component :html="testHtml" /></div>
         </div>
     </div>
 </template>
@@ -32,37 +34,42 @@
     export default {
         data() {
             return {
-                result: null,
+                result: {},
+                payload: {
+                    data: [1.1, 2.2, 3.1],
+                    services: [
+                        { position: 0, name: "get_sum" },
+                        {
+                            position: 1,
+                            name: "get_round",
+                            config: {
+                                roundType: "floor",
+                            },
+                        },
+                    ],
+                    visualization: { renderType: "basic", mainElement: "i" },
+                },
             };
         },
         methods: {
             async getAdd() {
-                const data = {
-                    data: [1, 2, 3, 4],
-                    services: [
-                        {
-                            position: 0,
-                            name: "get_sum",
-                        },
-                        { position: 1, name: "get_round" },
-                    ],
-                    visualization: null,
-                    meta: { fields: {} },
-                };
+                const payload = this.payload;
                 //this.result = await this.$axios.$post("", data);
                 // post request including data
-                this.result = await this.$axios.post("", {
+                const res = await this.$axios.post("", {
                     headers: {
                         "Content-Type": "application/json",
                         "Access-Control-Allow-Origin": "*",
                     },
-                    data: data,
+                    data: payload,
                 });
+
+                this.result = res.data;
             },
         },
         computed: {
             testHtml() {
-                return `<h2 class='subtitle'>We render the html-preformatted result <i>${this.result}</i> from the response directly after calling the API</h2></p>`;
+                return this.result;
             },
         },
     };
