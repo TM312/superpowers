@@ -22,3 +22,9 @@ module "lambda_functions" {
 module "roles_permissions" {
   source = "./modules/roles-permissions"
 }
+
+
+
+module "lambda_layers" {
+  source = "./modules/lambda-layers"
+}

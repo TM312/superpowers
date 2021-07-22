@@ -38,16 +38,16 @@
                 payload: {
                     data: [1.1, 2.2, 3.1],
                     services: [
-                        { position: 1, name: "get_sum" },
+                        { position: 0, name: "get_sum" },
                         {
-                            position: 0,
+                            position: 1,
                             name: "get_round",
                             config: {
-                                roundType: "ceil",
+                                roundType: "floor",
                             },
                         },
                     ],
-                    visualization: { renderType: "basic", mainElement: "h1" },
+                    visualization: { renderType: "basic", mainElement: "i" },
                 },
             };
         },

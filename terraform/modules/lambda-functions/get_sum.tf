@@ -12,6 +12,10 @@ resource "aws_lambda_function" "lambda_get_sum" {
   role             = var.lambda_execute_role_arn
   handler          = "get_sum.lambda_handler"
   runtime          = "python3.8"
+
+  depends_on = [
+    aws_cloudwatch_log_group.lambda_get_sum_log_group,
+  ]
 }
 
 # CloudWatch

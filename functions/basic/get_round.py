@@ -54,6 +54,9 @@ def _perform_round(element: Union[int, float], config):
         elif config["roundType"] == "truncate":
             value = int(element)
 
+        else:
+            return False
+
         return value
 
     return round(element, 2)

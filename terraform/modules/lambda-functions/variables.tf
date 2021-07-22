@@ -4,6 +4,11 @@ variable "env" {
   description = "The deployment environment name"
 }
 
+variable "python_runtime" {
+  type = string
+  default = "python3.8"
+}
+
 # IAM roles and permissions
 variable "lambda_invoke_lambda_role_name" {
   type = string

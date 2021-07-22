@@ -1,3 +1,7 @@
+import sys
+
+sys.path.insert(0, "package/")
+
 import logging
 import spacy
 from spacy.lang.en.stop_words import STOP_WORDS
@@ -36,14 +40,14 @@ def lambda_handler(event, context) -> str:
         return False
 
 
-def _get_summary(text: str, config: dict):
-    nlp = spacy.load("en")
-    text = nlp(text)
+def _get_summary(text: str, config: dict) -> str:
+    nlp = spacy.load("en_core_web_md")
+    doc = nlp(text)
 
     keyword = []
     stopwords = list(STOP_WORDS)
     pos_tag = ["PROPN", "ADJ", "NOUN", "VERB"]
-    for token in text:
+    for token in doc:
         if token.text in stopwords or token.text in punctuation:
             continue
         if token.pos_ in pos_tag:
@@ -55,7 +59,7 @@ def _get_summary(text: str, config: dict):
         freq_word[word] = freq_word[word] / max_freq
 
     sent_strength = {}
-    for sent in text.sents:
+    for sent in doc.sents:
         for word in sent:
             if word.text in freq_word.keys():
                 if sent in sent_strength.keys():
