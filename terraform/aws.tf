@@ -16,6 +16,7 @@ module "lambda_functions" {
   lambda_invoke_lambda_role_arn  = module.roles_permissions.lambda_invoke_lambda_role_arn
   lambda_execute_role_name       = module.roles_permissions.lambda_execute_role_name
   lambda_execute_role_arn        = module.roles_permissions.lambda_execute_role_arn
+  layer_nlp_arn                  = module.lambda_layers.layer_nlp_arn
   env                            = var.env
 }
 
