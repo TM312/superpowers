@@ -1,8 +1,8 @@
 # AWSLambda
 data "archive_file" "zip_lambda_function_get_text_analysis" {
   type        = "zip"
-  source_file = "${path.root}/../functions/nlp/get_text_analysis/handler.py"
-  output_path = "${path.root}/../functions/nlp/get_text_analysis/handler.zip"
+  source_file = "${path.root}/../functions/nlp/get_text_analysis.py"
+  output_path = "${path.root}/../functions/nlp/get_text_analysis.zip"
 }
 
 
@@ -13,7 +13,7 @@ resource "aws_lambda_function" "lambda_get_text_analysis" {
   function_name    = "lambda_get_text_analysis_${var.env}"
   layers           = [var.layer_nlp_arn]
   role             = var.lambda_execute_role_arn
-  handler          = "handler.lambda_handler"
+  handler          = "get_text_analysis.lambda_handler"
   runtime          = "python3.8"
 
 }

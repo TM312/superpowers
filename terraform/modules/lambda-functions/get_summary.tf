@@ -12,7 +12,7 @@ resource "aws_lambda_function" "lambda_get_summary" {
   function_name    = "lambda_get_summary_${var.env}"
   layers           = [var.layer_nlp_arn]
   role             = var.lambda_execute_role_arn
-  handler          = "handler.lambda_handler"
+  handler          = "get_summary.lambda_handler"
   runtime          = "python3.8"
 
 }
