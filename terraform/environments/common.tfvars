@@ -1,1 +1,1 @@
-project_name="superpowers"
+project_name = "superpowers"

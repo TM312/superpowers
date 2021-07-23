@@ -22,8 +22,13 @@ module "lambda_functions" {
 
 module "roles_permissions" {
   source = "./modules/roles-permissions"
+
+  s3_lambda_layers_arn = module.lambda_layers.s3_lambda_layers_arn
 }
 
 module "lambda_layers" {
   source = "./modules/lambda-layers"
+
+  project_name = var.project_name
+
 }

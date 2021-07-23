@@ -26,13 +26,13 @@ resource "aws_iam_policy" "lambda_execute_policy" {
   "Version": "2012-10-17",
       "Statement": [
         {
+          "Effect": "Allow",
           "Action": [
             "logs:CreateLogGroup",
             "logs:CreateLogStream",
             "logs:PutLogEvents"
           ],
-          "Resource": "arn:aws:logs:*:*:*",
-          "Effect": "Allow"
+          "Resource": "arn:aws:logs:*:*:*"
         },
         {
             "Effect": "Allow",
@@ -41,6 +41,13 @@ resource "aws_iam_policy" "lambda_execute_policy" {
                 "lambda:InvokeAsync"
             ],
             "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "${var.s3_lambda_layers_arn}"
         }
     ]
 }

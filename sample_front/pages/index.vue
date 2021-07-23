@@ -21,6 +21,18 @@
             </h5>
             <br />
             <br />
+            <div class="links">
+                <span @click="getSummary()" class="button--green">
+                    Get Summary
+                </span>
+            </div>
+            <h5>
+                Payload: { <br />
+                data: {{ payloadSummary.data }}, <br />
+                services: {{ payloadSummary.services }}, <br />
+                visualization: {{ payloadSummary.visualization }} <br />
+                }
+            </h5>
             <h2>
                 We render the html-preformatted result directly from the API
                 response
@@ -49,11 +61,30 @@
                     ],
                     visualization: { renderType: "basic", mainElement: "i" },
                 },
+                payloadSummary: {
+                    data: "Data sovereignty is the idea that data are subject to the laws and governance structures within the nation it is collected. The concept of data sovereignty is closely linked with data security, cloud computing and technological sovereignty. Unlike technological sovereignty, which is vaguely defined and can be used as an umbrella term in policymaking,[1] data sovereignty is specifically concerned with questions surrounding the data itself.[2] Data sovereignty is usually discussed in two ways: in relation to Indigenous groups and Indigenous autonomy from post-colonial states or in relation to transnational data flow. With the rise of cloud computing, many countries have passed various laws around control and storage of data, which all reflects measures of data sovereignty.[2] More than 100 countries have some sort of data sovereignty laws in place.[3] With self-sovereign identity (SSI) the individual identity holders can fully create and control their credentials, although a nation can still issue a digital identity in that paradigm.",
+                    services: [{ position: 0, name: "get_summary" }],
+                    visualization: { renderType: "basic", mainElement: "p" },
+                },
             };
         },
         methods: {
             async getAdd() {
                 const payload = this.payload;
+                //this.result = await this.$axios.$post("", data);
+                // post request including data
+                const res = await this.$axios.post("", {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Access-Control-Allow-Origin": "*",
+                    },
+                    data: payload,
+                });
+
+                this.result = res.data;
+            },
+            async getSummary() {
+                const payload = this.payloadSummary;
                 //this.result = await this.$axios.$post("", data);
                 // post request including data
                 const res = await this.$axios.post("", {
