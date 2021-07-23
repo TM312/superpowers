@@ -13,9 +13,6 @@ resource "aws_lambda_function" "lambda_get_round" {
   handler          = "get_round.lambda_handler"
   runtime          = "python3.8"
 
-  depends_on = [
-    aws_cloudwatch_log_group.lambda_get_round_log_group,
-  ]
 }
 
 # CloudWatch
