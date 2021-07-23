@@ -1,7 +1,3 @@
-import sys
-
-sys.path.insert(0, "package/")
-
 import logging
 import spacy
 from spacy.lang.en.stop_words import STOP_WORDS

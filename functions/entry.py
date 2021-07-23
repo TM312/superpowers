@@ -8,9 +8,13 @@ client = boto3.client("lambda")
 log = logging.getLogger()
 log.setLevel(logging.INFO)
 
+BASE_ARN_LAMBDA = "arn:aws:lambda:ap-southeast-1:046111613375:function:"
+
 service_dict = {
-    "get_sum": f"arn:aws:lambda:ap-southeast-1:046111613375:function:lambda_get_sum_{os.getenv('env')}",
-    "get_round": f"arn:aws:lambda:ap-southeast-1:046111613375:function:lambda_get_round_{os.getenv('env')}",
+    "get_sum": f"{BASE_ARN_LAMBDA}lambda_get_sum_{os.getenv('env')}",
+    "get_round": f"{BASE_ARN_LAMBDA}lambda_get_round_{os.getenv('env')}",
+    "get_summary": f"{BASE_ARN_LAMBDA}lambda_get_summary_{os.getenv('env')}",
+    "get_text_analysis": f"{BASE_ARN_LAMBDA}lambda_get_text_analysis_{os.getenv('env')}",
 }
 
 CORS = (
