@@ -1,20 +1,86 @@
-# S U P E R P O W E R S
+# S-U-P-E-R-P-O-W-E-R-S
 
-## PoC for running a lightweight page with all the intensive stuff on remote
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="#">
+    <img src="images/logo.png" alt="Superpowers Logo" width="197" height="62">
+  </a>
+
+  <h3 align="center">S-U-P-E-R-P-O-W-E-R-S</h3>
+
+  <p align="center">
+    ML Services as API calls
+    <br />
+    <a href="https://github.com/TM312/superpowers/issues"><strong>Report Bug/Request feature »</strong></a>
+  </p>
+</p>
 
 
+
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about">About</a>
+    </li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#API-structure">API Structure</a></li>
+    <li><a href="#deployment-environments">Deployment Environments</a></li>
+  </ol>
+</details>
+
+## About
 What is an API, really?
 
+PoC for running a lightweight page with all the intensive stuff on remote
 
-# Service README
-
-
-
-## Dir Structure
-
-- Each service contains the following
+This is the main repo for **Superpowers**.
+The goal of this project is to provide
 
 
+For specifics on technical aspects, you may refer directly to the sub-pages:
+
+
+## Architecture
+
+The project has three distinct components:
+1. **Lambda functions**
+
+    The foundation of **Superpowers** is a set of *Lambda functions*.
+
+    The main sub dir is <a href="https://github.com/TM312/superpowers/tree/master/functions">functions</a>.
+
+
+2. **Terraform configuration**
+
+    The corresponding infrastructure is managed using *Terraform*.
+
+    The main sub dir is <a href="https://github.com/TM312/superpowers/tree/master/terraform">terraform</a>.
+
+3. **Frontpage**
+
+    The frontend serving as the main entry point for potential/new customers is based on *Nuxt* using *TailwindCSS*.
+
+    The main sub dir is <a href="https://github.com/TM312/superpowers/tree/master/front">front</a>.
+
+
+
+## Deployment Environments
+
+Three environments are used for a staged code deployment process:
+
+
+| Name         | Address  |
+| :--------------- |:---------------|
+| dev      | *tbd* |
+| stage      | *tbd* |
+| prod      | *tbd* |
+
+
+
+<br>
 
 
 ## Endpoints
@@ -27,7 +93,7 @@ What is an API, really?
 | /statistics      | Statistics | False | Returns statistics for each service.|
 
 
-## Sample Configuration
+## Sample Request
 
 ```py
 {
@@ -45,18 +111,3 @@ What is an API, really?
     'visualization': None
 }
 ```
-
-
-
-## Next Steps
-[] create tf config for get_sum and get_rounded
-
-
-## PoC Example Ideas
-- basic arithmetic
-- text tokenization using spacy
-- image classification using yolo
-    - provide link to image
-    - pipeline:
-        - extract image
-        - classify image
