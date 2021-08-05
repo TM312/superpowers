@@ -28,6 +28,9 @@
     <li><a href="#architecture">Architecture</a></li>
     <li><a href="#API-structure">API Structure</a></li>
     <li><a href="#deployment-environments">Deployment Environments</a></li>
+    <li><a href="#endpoints">Endpoints</a></li>
+    <li><a href="#sample-request">Sample Request</a></li>
+    <li><a href="#repo-automation">Repo Automation</a></li>
   </ol>
 </details>
 
@@ -59,11 +62,20 @@ The project has three distinct components:
 
     The main sub dir is <a href="https://github.com/TM312/superpowers/tree/master/terraform">terraform</a>.
 
-3. **Frontpage**
+3. **Landingpage**
 
     The frontend serving as the main entry point for potential/new customers is based on *Nuxt* using *TailwindCSS*.
 
-    The main sub dir is <a href="https://github.com/TM312/superpowers/tree/master/front">front</a>.
+    The main sub dir is <a href="https://github.com/TM312/superpowers_landing/tree/master/landing">landing</a>.
+
+3. **Documentation**
+
+    @todo Setup documentation page
+    @body Setup a frontend page in which documentation concerning the api is is put. Ideally to be setup as a public repo (can also use [ImgBot](https://imgbot.net))
+
+    <!-- The frontend serving as the main entry point for potential/new customers is based on *Nuxt* using *TailwindCSS*. -->
+
+    <!-- The main sub dir is <a href="https://github.com/TM312/superpowers/tree/master/front">front</a>. -->
 
 
 
@@ -111,3 +123,12 @@ Three environments are used for a staged code deployment process:
     'visualization': None
 }
 ```
+
+
+## Repo Automation
+
+This repo uses the following bots:
+- [Dependabot](https://dependabot.com/)
+- [Pull](https://wei.github.io/pull/): Keep your forks up-to-date via automated PRs
+- [Semantic Pull Requests](https://github.com/zeke/semantic-pull-requests): Ensure that every PR has just enough semantic information to be able to trigger a release when appropriate
+- [Todo](https://todo.jasonet.co/): Automagically creates new issues based on comments and keywords in your code when you push it to GitHub
