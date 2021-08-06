@@ -62,7 +62,7 @@ The project has three distinct components:
 
     The main sub dir is <a href="https://github.com/TM312/superpowers/tree/master/terraform">terraform</a>.
 
-3. **Landingpage**
+3. **Landing page**
 
     The frontend serving as the main entry point for potential/new customers is based on *Nuxt* using *TailwindCSS*.
 
@@ -70,8 +70,10 @@ The project has three distinct components:
 
 3. **Documentation**
 
+    <!--
     @todo Setup documentation page
     @body Setup a frontend page in which documentation concerning the api is is put. Ideally to be setup as a public repo (can also use [ImgBot](https://imgbot.net))
+    -->
 
     <!-- The frontend serving as the main entry point for potential/new customers is based on *Nuxt* using *TailwindCSS*. -->
 
