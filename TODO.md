@@ -5,9 +5,9 @@
 ## high
 - [ ] Core vision/strength/interest discussion > Fill out README::About/Principles
 - [ ] First version scoping
-- [ ] Find proper tool for project planning
+- [ ] Find proper tool for project planning, maybe [Linear](https://linear.app/)?
 - [ ] Lambda function dependencies as Docker Image -> wireframe
-- [ ] Landing Page >> Inspiration [Linear.app](https://linear.app/), [Vercel](https://vercel.com/), [Stripe](https://stripe.com/en-sg)
+- [ ] Landing Page >> Inspiration [Linear](https://linear.app/), [Vercel](https://vercel.com/), [Stripe](https://stripe.com/en-sg)
 - [x] Documentation base: Nuxt documentation adapt?
 
 
