@@ -35,6 +35,14 @@
 </details>
 
 ## About
+
+- Project title
+- Project description (at this stage you can have few paragraphs or bullet points to describe what do you think the project is for)
+- Why are you building this? (rationale why is it’s needed, how it’s supporting your goals etc)
+- The owner (who is responsible for building or driving this if there are multiple people)
+
+
+
 What is an API, really?
 
 PoC for running a lightweight page with all the intensive stuff on remote
@@ -43,7 +51,6 @@ This is the main repo for **Superpowers**.
 The goal of this project is to provide
 
 
-For specifics on technical aspects, you may refer directly to the sub-pages:
 
 
 ## Architecture
@@ -55,7 +62,6 @@ The project has three distinct components:
 
     The main sub dir is <a href="https://github.com/TM312/superpowers/tree/master/functions">functions</a>.
 
-
 2. **Terraform configuration**
 
     The corresponding infrastructure is managed using *Terraform*.
@@ -66,18 +72,17 @@ The project has three distinct components:
 
     The frontend serving as the main entry point for potential/new customers is based on *Nuxt* using *TailwindCSS*.
 
-    The main sub dir is <a href="https://github.com/TM312/superpowers_landing/tree/master/landing">landing</a>.
+    The main sub dir is <a href="https://github.com/TM312/superpowers/landing/tree/master/landing">landing</a>.
 
 3. **Documentation**
 
-    <!--
-    @todo Setup documentation page
-    @body Setup a frontend page in which documentation concerning the api is is put. Ideally to be setup as a public repo (can also use [ImgBot](https://imgbot.net))
-    -->
+    The documentation is covers
+      - the general API structure
+      - descriptions of individual services
+      - glossary
 
-    <!-- The frontend serving as the main entry point for potential/new customers is based on *Nuxt* using *TailwindCSS*. -->
-
-    <!-- The main sub dir is <a href="https://github.com/TM312/superpowers/tree/master/front">front</a>. -->
+    It is based on *Nuxt Content > Docs Theme* using *TailwindCSS* allowing it to be written as *markdown* files.
+    It is developed inside the separated and public repo named [sp_docs](https://github.com/TM312/sp_docs).
 
 
 
@@ -125,6 +130,12 @@ Three environments are used for a staged code deployment process:
     'visualization': None
 }
 ```
+
+## Principles (ideas)
+- robust, tested services
+- extensive, well-structured documentation (open-source)
+- develop at own pace, but releases in weekly/bi-weekly cycles
+
 
 
 ## Repo Automation
