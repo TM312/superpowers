@@ -158,75 +158,91 @@
                         Regular updates on our journey, on new data sources,
                         services, and components.
                     </p>
-                    <form class="mt-4 sm:flex sm:max-w-md">
-                        <label for="emailAddress" class="sr-only"
-                            >Email address</label
-                        >
-                        <input
-                            id="emailAddress"
-                            type="email"
-                            name="emailAddress"
-                            autocomplete="email"
-                            required
+                    <transition name="fade">
+                        <p
+                            v-show="!clicked"
                             class="
-                                appearance-none
-                                min-w-0
-                                w-full
-                                bg-white
-                                border border-transparent
-                                rounded-md
-                                py-2
-                                px-4
-                                text-base text-gray-900
-                                placeholder-gray-500
-                                focus:outline-none
-                                focus:ring-2
-                                focus:ring-offset-2
-                                focus:ring-offset-gray-800
-                                focus:ring-white
-                                focus:border-white
-                                focus:placeholder-gray-400
+                                mt-4
+                                font-medium
+                                text-teal-400
+                                hover:text-teal-200
                             "
-                            placeholder="Enter your email"
-                        />
-                        <div
-                            class="
-                                mt-3
-                                rounded-md
-                                sm:mt-0
-                                sm:ml-3
-                                sm:flex-shrink-0
-                            "
+                            @click="clicked = true"
                         >
-                            <button
-                                type="submit"
+                            Click here to get the news
+                        </p>
+                    </transition>
+                    <transition name="fade">
+                        <form v-show="clicked" class="mt-4 sm:flex sm:max-w-md">
+                            <label for="emailAddress" class="sr-only"
+                                >Email address</label
+                            >
+                            <input
+                                id="emailAddress"
+                                type="email"
+                                name="emailAddress"
+                                autocomplete="email"
+                                required
                                 class="
+                                    appearance-none
+                                    min-w-0
                                     w-full
-                                    bg-gradient-to-r
-                                    from-indigo-500
-                                    to-blue-600
+                                    bg-white
                                     border border-transparent
                                     rounded-md
                                     py-2
                                     px-4
-                                    flex
-                                    items-center
-                                    justify-center
-                                    text-base
-                                    font-medium
-                                    text-white
-                                    hover:bg-indigo-600
+                                    text-base text-gray-900
+                                    placeholder-gray-500
                                     focus:outline-none
                                     focus:ring-2
                                     focus:ring-offset-2
                                     focus:ring-offset-gray-800
-                                    focus:ring-indigo-500
+                                    focus:ring-white
+                                    focus:border-white
+                                    focus:placeholder-gray-400
+                                "
+                                placeholder="Enter your email"
+                            />
+                            <div
+                                class="
+                                    mt-3
+                                    rounded-md
+                                    sm:mt-0
+                                    sm:ml-3
+                                    sm:flex-shrink-0
                                 "
                             >
-                                Subscribe
-                            </button>
-                        </div>
-                    </form>
+                                <button
+                                    type="submit"
+                                    class="
+                                        w-full
+                                        bg-gradient-to-r
+                                        from-teal-500
+                                        to-emerald-800
+                                        border border-teal-700
+                                        rounded-md
+                                        py-2
+                                        px-4
+                                        flex
+                                        items-center
+                                        justify-center
+                                        text-base
+                                        font-medium
+                                        text-white
+                                        hover:bg-teal-600
+                                        focus:outline-none
+                                        focus:ring-2
+                                        focus:ring-offset-2
+                                        focus:ring-offset-gray-800
+                                        focus:ring-teal-800
+                                    "
+                                >
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+                    </transition>
                 </div>
             </div>
             <div
@@ -298,6 +314,7 @@
         name: "TheFooter",
         data() {
             return {
+                clicked: false,
                 year: new Date().getFullYear(),
             };
         },
@@ -306,3 +323,14 @@
         // },
     };
 </script>
+
+<style scoped>
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity 0.5s;
+    }
+    .fade-enter-to,
+    .fade-leave-to {
+        opacity: 2.5s;
+    }
+</style>
