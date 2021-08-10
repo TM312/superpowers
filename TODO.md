@@ -1,12 +1,29 @@
 # PROJECT PLANNING
 
+
 ## TODOs
+
+## immediate next steps:
+- [ ] @Thomas: Provide access for alexis to repo
+- [ ] @Thomas: Properly setup documentation
+- [ ] @Thomas: Setup landing
+- [ ] @Alexis: Research valuable, feasible functions
+- [ ] @both: Research authentication
+- [ ] @both: Brainstorm name & logo
+
+
+## State in 2 weeks
+- 5 useful functions
+- initial version documentation
+- design landing page
+– discussion on authentication method
+
 
 ## high
 - [ ] Core vision/strength/interest discussion > Fill out README::About/Principles
 - [ ] First version scoping
 - [ ] Find proper tool for project planning, maybe [Linear](https://linear.app/)?
-- [ ] Lambda function dependencies as Docker Image -> wireframe
+- [ ] Lambda function dependencies as Docker Image -> wireframe [AWS Article](https://aws.amazon.com/blogs/machine-learning/using-container-images-to-run-pytorch-models-in-aws-lambda/), [terraform example](https://github.com/terraform-aws-modules/terraform-aws-lambda/blob/v2.7.0/examples/container-image/main.tf), [tf example pt.2](https://registry.terraform.io/modules/terraform-aws-modules/lambda/aws/latest/examples/container-image#output_docker_image_uri)
 - [ ] Landing Page >> Inspiration [Linear](https://linear.app/), [Vercel](https://vercel.com/), [Stripe](https://stripe.com/en-sg)
 - [x] Documentation base: Nuxt documentation adapt?
 
@@ -14,7 +31,7 @@
 ## normal
 - [ ] Define Git strategy/branches
 - [ ] How to handle API versioning? as parameter? and internally?
-- [ ] Marketing: Build in public/Twitter?
+- [ ] Marketing: Build in public/Twitter? Check on work policy
 - [ ] Move terraform state to S3 bucket for shared management
 - [ ] Select testing frameworks frontend/lambda [article on testing lambda functions](https://towardsdatascience.com/how-i-write-meaningful-tests-for-aws-lambda-functions-f009f0a9c587), [testing lib for boto3/AWS SDK](http://docs.getmoto.org/en/latest/)
 - [ ] standardized lambda test base, e.g. 1. test false/correct argument types, 2. test normal behavior, 3. invalid argument values, 4. extrem inputs
