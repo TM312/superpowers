@@ -1,5 +1,5 @@
 <template>
-    <div class="body bg-gradient-to-r from-teal-900 to-gray-800 text-gray-300">
+    <div class="body bg-gray-800 text-gray-300">
         <the-header />
         <nuxt />
         <the-footer class="footer" />

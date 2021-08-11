@@ -14,22 +14,28 @@
         >
             <h2
                 class="
-                    text-3xl
-                    font-extrabold
+                    text-4xl
+                    font-black
                     tracking-tight
                     text-gray-200
-                    sm:text-4xl
+                    sm:text-6xl
                 "
             >
-                <span class="block"
-                    >Left side: Landing Slogan alogn the lines: Powerful
-                    computer vision from requests</span
-                >
-                <span class="block"
-                    >[Potentially on right side] Small interactive example, e.g.
-                    upload photo and get superscale</span
-                >
+                <span class="block">API Reimagined</span>
             </h2>
+            <p
+                class="
+                    mt-4
+                    md:mt-6
+                    lg:mt-10
+                    text-xl
+                    sm:text-2xl
+                    text-indigo-200
+                "
+            >
+                A suite of data, services, and rendering that can be freely
+                configured through a simple API.
+            </p>
         </div>
     </section>
 </template>
