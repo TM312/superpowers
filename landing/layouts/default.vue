@@ -1,7 +1,7 @@
 <template>
-    <div class="body text-gray-300">
+    <div class="body text-gray-300 bg-gray-800">
         <the-header />
-        <nuxt class="bg-gray-800" />
+        <nuxt />
         <the-footer class="footer" />
     </div>
 </template>
