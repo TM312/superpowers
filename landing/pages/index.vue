@@ -1,12 +1,18 @@
 <template>
-    <div>
-        <section-landing-top class="pt-4 md:pt-6 lg:pt-10 bg-gray-800" />
-        <section-landing-main
-            class="mt-5 py-5 px-5 lg:px-10 pb-4 md:pb-6 lg:pb-10"
-        />
+    <div class="py-4 md:py-6 lg:py-10">
+        <section-landing-top />
+        <section-landing-main class="px-5 lg:px-10" :requests="requests" />
     </div>
 </template>
 
 <script>
-    export default {};
+    export default {
+        layout: "default",
+        transition: "fade",
+        computed: {
+            requests() {
+                return this.$store.state.requests;
+            },
+        },
+    };
 </script>

@@ -1,7 +1,7 @@
 <template>
-    <div class="body bg-gray-800 text-gray-300">
+    <div class="body text-gray-300">
         <the-header />
-        <nuxt />
+        <nuxt class="bg-gray-800" />
         <the-footer class="footer" />
     </div>
 </template>
@@ -12,28 +12,16 @@
         margin: 0;
     }
 
-    .body {
-        display: flex;
-        flex-direction: column;
-    }
-
     .footer {
         margin-top: auto;
     }
 
-    .background {
-        background: linear-gradient(-45deg, #1f37e9, rgb(69, 149, 180));
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity 0.3s;
     }
-
-    @keyframes change {
-        0% {
-            background-position: 0 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0 50%;
-        }
+    .fade-enter,
+    .fade-leave-to {
+        opacity: 0;
     }
 </style>

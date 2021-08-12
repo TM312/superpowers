@@ -1,44 +1,45 @@
+  <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-    <div class="max-w-7xl mx-auto my-10 md:my-15 lg:my-20">
-        <div class="bg-gray-700 shadow rounded sm:rounded-lg p-10">
+    <div class="bg-teal-900">
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
             <div class="text-center">
                 <h2
                     class="
                         text-base
                         font-semibold
-                        text-teal-600
+                        text-teal-500
                         tracking-wide
                         uppercase
                     "
                 >
-                    About
+                    Pricing
                 </h2>
                 <p
                     class="
                         mt-1
                         text-4xl
                         font-extrabold
+                        text-gray-200
                         sm:text-5xl
                         sm:tracking-tight
                         lg:text-6xl
                     "
                 >
-                    Develop with superpowers
+                    Take control of your team.
                 </p>
                 <p class="max-w-xl mt-5 mx-auto text-xl text-gray-400">
-                    Superpowers is a software company providing state-of-the-art
-                    computer vision capabilities through a powerful API at any
-                    scale.
+                    Start building for free, then add a site plan to go live.
+                    Account plans unlock additional features.
                 </p>
             </div>
         </div>
     </div>
 </template>
 
+
 <script>
     export default {
-        layout: "default",
-        transition: "fade",
+        name: "SectionRequestsTop",
     };
 </script>
 

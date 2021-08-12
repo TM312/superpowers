@@ -318,19 +318,5 @@
                 year: new Date().getFullYear(),
             };
         },
-        // mounted() {
-        //   this.year = new Date().getFullYear()
-        // },
     };
 </script>
-
-<style scoped>
-    .fade-enter-active,
-    .fade-leave-active {
-        transition: opacity 0.5s;
-    }
-    .fade-enter-to,
-    .fade-leave-to {
-        opacity: 2.5s;
-    }
-</style>
