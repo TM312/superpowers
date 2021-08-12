@@ -39,6 +39,7 @@
 - [ ] User Authentication handling, how?
 - [ ] How to make API calls for users?
 - [ ] How to store user related data, e.g. email, team, token?
+- [ ] Combine nuxt/auth with nuxt-orm -> example: [Github Repo](https://github.com/guillaumebriday/todolist-frontend-nuxt)
 
 
 
