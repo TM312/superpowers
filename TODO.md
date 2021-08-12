@@ -13,7 +13,7 @@
 
 
 ## State in 2 weeks
-- 5 useful functions
+- 5 useful functions -> check huggingface fo usefule models?
 - initial version documentation
 - design landing page
 – discussion on authentication method
