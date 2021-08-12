@@ -1,7 +1,9 @@
 <template>
-    <div>
-        <section-requests-top />
-        <section-requests-details class="py-16 max-w-7xl mx-auto" />
+    <div class="py-16">
+        <section-requests-details
+            class="max-w-7xl mx-auto"
+            :request="request"
+        />
     </div>
 </template>
 
@@ -9,6 +11,11 @@
     export default {
         layout: "default",
         transitions: "fade",
+        data() {
+            return {
+                requestId: this.$route.params.requestId,
+            };
+        },
     };
 </script>
 
