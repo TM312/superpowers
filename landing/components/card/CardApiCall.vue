@@ -17,7 +17,7 @@
             </div>
             <div class="mt-3">
                 <nuxt-link
-                    :to="`/requests/${request.id}`"
+                    :to="`/requests/${request.public_id}`"
                     class="font-medium text-gray-400 hover:text-gray-300"
                 >
                     More details

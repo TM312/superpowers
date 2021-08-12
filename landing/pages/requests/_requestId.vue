@@ -16,6 +16,21 @@
                 requestId: this.$route.params.requestId,
             };
         },
+        computed: {
+            request() {
+                return this.$store
+                    .$db()
+                    .model("requests")
+                    .query()
+                    .where("public_id", this.$route.params.requestId)
+                    .with("id")
+                    .with("public_id")
+                    .with("name")
+                    .with("description")
+                    .with("updated_at")
+                    .first();
+            },
+        },
     };
 </script>
 

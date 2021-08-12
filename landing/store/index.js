@@ -1,9 +1,6 @@
-export const state = () => ({
-     requests: [
-       {
-         'id': 'superscale',
-         'name': 'Superscale',
-         'description': 'A machine learning based service to increase the resolution of images.'
-       }
-     ],
-})
+import VuexORM from '@vuex-orm/core'
+import database from '@/database'
+
+export const plugins = [
+  VuexORM.install(database)
+]

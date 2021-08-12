@@ -6,6 +6,26 @@
     </div>
 </template>
 
+<script>
+    import data from "@/data";
+
+    export default {
+        computed: {
+            requests() {
+                return this.$store.$db().model("requests").exists();
+            },
+        },
+        async fetch() {
+            if (this.requests === false) {
+                // Here we are stubbing the initial data. In the real world, this
+                // should be the response from the API Backend.
+                const initialData = await data();
+                this.$store.$db().model("requests").create({ data: initialData });
+            }
+        },
+    };
+</script>
+
 <style>
     .body {
         height: 100vh;

@@ -13,10 +13,17 @@
 <script>
     export default {
         name: "SectionLandingMain",
-        props: {
-            requests: {
-                type: Array,
-                required: true,
+        computed: {
+            requests() {
+                return this.$store
+                    .$db()
+                    .model("requests")
+                    .query()
+                    .with("id")
+                    .with("name")
+                    .with("description")
+                    .with("updated_at")
+                    .get();
             },
         },
     };
