@@ -4,7 +4,7 @@
 ## TODOs
 
 ## immediate next steps:
-- [ ] @Thomas: Provide access for alexis to repo
+- [x] @Thomas: Provide access for alexis to repo
 - [ ] @Thomas: Properly setup documentation
 - [ ] @Thomas: Setup landing
 - [ ] @Alexis: Research valuable, feasible functions
@@ -39,7 +39,16 @@
 - [ ] User Authentication handling, how?
 - [ ] How to make API calls for users?
 - [ ] How to store user related data, e.g. email, team, token?
+
+
+## Thomas
 - [ ] Combine nuxt/auth with nuxt-orm -> example: [Github Repo](https://github.com/guillaumebriday/todolist-frontend-nuxt)
+- [ ] Feature: Add regions to request (codes on hover)
+- [ ] Feature: Add region page as reference (map or globe with Zones and names)
+- [ ] Feature: Calculate avg response time for requests
+- [ ] Feature: Add async support to requests
+- [ ] Feature: Add 'can be combined with' to request
+- [ ] Write About
 
 
 
