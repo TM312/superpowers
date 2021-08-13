@@ -14,112 +14,58 @@
         <div class="border-t border-gray-900 px-4 py-5 sm:px-6">
             <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
                 <div class="sm:col-span-1">
-                    <dt class="text-sm font-medium text-gray-400">Full name</dt>
-                    <dd class="mt-1 text-sm text-gray-200">Margot Foster</dd>
-                </div>
-                <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-400">
-                        Application for
+                        Available Regions
                     </dt>
                     <dd class="mt-1 text-sm text-gray-200">
-                        Backend Developer
+                        <span v-for="(region, i) in request.regions" :key="i">
+                            <span v-if="i + 1 !== request.regions.length">
+                                {{ region }},
+                            </span>
+                            <span v-else v-text="region" />
+                        </span>
+                    </dd>
+                </div>
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-400">Price</dt>
+                    <dd class="mt-1 text-sm text-gray-200">
+                        US{{ request.price }} per request
                     </dd>
                 </div>
                 <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-400">
-                        Email address
+                        Average Response Time
                     </dt>
                     <dd class="mt-1 text-sm text-gray-200">
-                        margotfoster@example.com
+                        {{ request.response_time }}ms
                     </dd>
                 </div>
                 <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-400">
-                        Salary expectation
+                        Last Updated
                     </dt>
-                    <dd class="mt-1 text-sm text-gray-200">$120,000</dd>
+                    <dd class="mt-1 text-sm text-gray-200">
+                        {{ request.updated_at }}
+                    </dd>
                 </div>
+
                 <div class="sm:col-span-2">
-                    <dt class="text-sm font-medium text-gray-400">About</dt>
-                    <dd class="mt-1 text-sm text-gray-200">
-                        Fugiat ipsum ipsum deserunt culpa aute sint do nostrud
-                        anim incididunt cillum culpa consequat. Excepteur qui
-                        ipsum aliquip consequat sint. Sit id mollit nulla mollit
-                        nostrud in ea officia proident. Irure nostrud pariatur
-                        mollit ad adipisicing reprehenderit deserunt qui eu.
+                    <dt class="text-sm font-medium text-gray-400">
+                        Request parameters
+                    </dt>
+                    <dd class="mt-1">
+                        <table-request-params
+                            :request-params="request.request_params"
+                        />
                     </dd>
                 </div>
+
                 <div class="sm:col-span-2">
                     <dt class="text-sm font-medium text-gray-400">
-                        Sample Request
+                        [Sample Request]
                     </dt>
                     <dd class="mt-1 text-sm text-gray-200">
-                        <ul
-                            class="
-                                border border-gray-900
-                                rounded-md
-                                divide-y divide-gray-200
-                            "
-                        >
-                            <li
-                                class="
-                                    pl-3
-                                    pr-4
-                                    py-3
-                                    flex
-                                    items-center
-                                    justify-between
-                                    text-sm
-                                "
-                            >
-                                <div class="w-0 flex-1 flex items-center">
-                                    <span class="ml-2 flex-1 w-0 truncate">
-                                        resume_back_end_developer.pdf
-                                    </span>
-                                </div>
-                                <div class="ml-4 flex-shrink-0">
-                                    <a
-                                        href="#"
-                                        class="
-                                            font-medium
-                                            text-teal-400
-                                            hover:text-teal-300
-                                        "
-                                    >
-                                        Download
-                                    </a>
-                                </div>
-                            </li>
-                            <li
-                                class="
-                                    pl-3
-                                    pr-4
-                                    py-3
-                                    flex
-                                    items-center
-                                    justify-between
-                                    text-sm
-                                "
-                            >
-                                <div class="w-0 flex-1 flex items-center">
-                                    <span class="ml-2 flex-1 w-0 truncate">
-                                        coverletter_back_end_developer.pdf
-                                    </span>
-                                </div>
-                                <div class="ml-4 flex-shrink-0">
-                                    <a
-                                        href="#"
-                                        class="
-                                            font-medium
-                                            text-teal-400
-                                            hover:text-teal-300
-                                        "
-                                    >
-                                        Download
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
+                        [A long code sample]
                     </dd>
                 </div>
             </dl>

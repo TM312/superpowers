@@ -32,10 +32,6 @@
         margin: 0;
     }
 
-    .footer {
-        margin-top: auto;
-    }
-
     .fade-enter-active,
     .fade-leave-active {
         transition: opacity 0.3s;

@@ -1,6 +1,8 @@
 // LogType Model
 
 import { Model } from '@vuex-orm/core'
+import Param from './Param'
+
 
 
 
@@ -21,11 +23,18 @@ export default class Request extends Model {
         // Base
         id: this.uid(),
         public_id: this.string(''),
-
-        // attributes
         name: this.string(''),
         description: this.string(''),
-        updated_at: this.string('')
+        updated_at: this.string(''),
+
+        // attributes
+        price: this.number(0),
+        response_time: this.number(100),
+        regions: this.attr([]),
+
+
+        // relationships
+        request_params: this.hasMany(Param, 'request_param_public_id', 'public_id'),
       }
     }
 }
