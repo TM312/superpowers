@@ -114,7 +114,7 @@
         name: "TableRequestParams",
         props: {
             requestParams: {
-                type: Object,
+                type: Array,
                 required: true,
             },
         },
