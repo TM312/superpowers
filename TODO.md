@@ -39,6 +39,7 @@
 - [ ] User Authentication handling, how?
 - [ ] How to make API calls for users?
 - [ ] How to store user related data, e.g. email, team, token?
+- [ ] Handle errors in functions (currently 'return False')
 
 
 ## Thomas
