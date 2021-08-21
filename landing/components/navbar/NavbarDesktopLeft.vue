@@ -24,13 +24,21 @@
             <div class="flex space-x-4">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
 
-                <NuxtLink
-                    to="/documentation"
-                    :class="$route.name == 'documentation' ? active : inactive"
-                    class="px-3 py-2 rounded-md text-sm font-medium"
+                <a
+                    :href="docsUri"
+                    class="
+                        px-3
+                        py-2
+                        rounded-md
+                        text-sm
+                        font-medium
+                        text-gray-300
+                        hover:bg-gray-700
+                        hover:text-white
+                    "
                 >
                     Documentation
-                </NuxtLink>
+                </a>
             </div>
         </div>
     </div>
@@ -39,6 +47,12 @@
 <script>
     export default {
         name: "NavbarDesktopLeft",
+        props: {
+            docsUri: {
+                type: String,
+                required: true,
+            },
+        },
         data() {
             return {
                 active: "bg-gray-900 text-white",

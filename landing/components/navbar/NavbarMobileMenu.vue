@@ -1,16 +1,9 @@
 <template>
     <nav id="mobile-menu">
         <div class="max-w-3xl mx-auto px-2 pt-2 pb-3 space-y-1 sm:px-4">
-            <NuxtLink
-                to="/documentation"
-                :class="
-                    $route.name == 'documentation'
-                        ? classActiveMobile
-                        : classInactiveMobile
-                "
-            >
+            <a :href="docsUri" class="bg-teal-900 hover:bg-teal-700">
                 Documentation
-            </NuxtLink>
+            </a>
         </div>
         <div class="border-t border-gray-500 pt-4 pb-3">
             <div class="mt-3 px-2 space-y-1">
@@ -44,6 +37,12 @@
 <script>
     export default {
         name: "NavbarMobileMenu",
+        props: {
+            docsUri: {
+                type: String,
+                required: true,
+            },
+        },
         data() {
             return {
                 classActiveMobile:

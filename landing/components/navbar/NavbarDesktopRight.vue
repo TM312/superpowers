@@ -6,14 +6,11 @@
             class="
                 ml-5
                 flex-shrink-0
-                p-1
                 text-gray-400
                 focus:outline-none
                 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
                 text-sm
                 font-medium
-                rounded-md
-                bg-gray-100
                 rounded-md
                 py-2
                 px-3
@@ -39,7 +36,10 @@
                 rounded-md
                 shadow-sm
                 text-white
-                bg-indigo-600
+                bg-gradient-to-r
+                from-teal-500
+                to-emerald-800
+                border border-teal-700
                 hover:bg-indigo-700
                 focus:outline-none
                 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500

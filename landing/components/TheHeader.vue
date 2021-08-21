@@ -3,7 +3,7 @@
         <!-- Mobile menu button-->
         <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div class="relative flex items-center justify-between h-16">
-                <navbar-desktop-left />
+                <navbar-desktop-left :docs-uri="docsUri" />
 
                 <navbar-desktop-right />
 
@@ -12,7 +12,11 @@
         </div>
 
         <!-- Mobile menu, show/hide based on menu state. -->
-        <navbar-mobile-menu v-show="showMobileMenu" class="lg:hidden" />
+        <navbar-mobile-menu
+            v-show="showMobileMenu"
+            class="lg:hidden"
+            :docs-uri="docsUri"
+        />
     </div>
 </template>
 
@@ -24,6 +28,7 @@
                 clicked: false,
                 showMobileMenu: false,
                 showDropdown: false,
+                docsUri: "http://localhost:53408/introduction",
             };
         },
 
