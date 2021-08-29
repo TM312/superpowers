@@ -1,8 +1,10 @@
 <template>
     <div class="py-16">
-        <section-requests-details
-            class="max-w-7xl mx-auto"
-            :request="request"
+        <section-request-details class="max-w-7xl mx-auto" :request="request" />
+        <section-request-faqs
+            v-if="request.faqs"
+            class="mx-auto mt-10 md:12 lg:16 xl:20"
+            :faqs="request.faqs"
         />
     </div>
 </template>

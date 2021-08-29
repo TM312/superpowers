@@ -51,17 +51,6 @@
 
                 <div class="sm:col-span-2">
                     <dt class="text-sm font-medium text-gray-400">
-                        Request parameters
-                    </dt>
-                    <dd class="mt-1">
-                        <table-request-params
-                            :request-params="request.request_params"
-                        />
-                    </dd>
-                </div>
-
-                <div class="sm:col-span-2">
-                    <dt class="text-sm font-medium text-gray-400">
                         [Sample Request]
                     </dt>
                     <dd class="mt-1 text-sm text-gray-200">
@@ -76,7 +65,7 @@
 
 <script>
     export default {
-        name: "SectionRequestsDetails",
+        name: "SectionRequestDetails",
         props: {
             request: {
                 type: Object,

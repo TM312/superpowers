@@ -1,14 +1,6 @@
 <template>
     <div
-        class="
-            min-h-screen
-            bg-gray-50
-            flex flex-col
-            justify-center
-            py-12
-            sm:px-6
-            lg:px-8
-        "
+        class="min-h-screen flex flex-col justify-center py-10 sm:px-6 lg:px-8"
     >
         <transition
             enter-active-class="transition ease-out duration-100 transform"
@@ -31,15 +23,15 @@
             <img
                 class="mx-auto h-12 w-auto"
                 src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                alt="Shyp"
+                alt="Superpowers"
             />
-            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-300">
                 Sign in to your account
             </h2>
-            <p class="mt-2 text-center text-sm text-gray-600 max-w">
+            <p class="mt-2 text-center text-sm text-gray-400 max-w">
                 You don't have an account yet?
                 <nuxt-link
-                    class="font-medium text-indigo-600 hover:text-indigo-500"
+                    class="font-medium text-indigo-400 hover:text-indigo-300"
                     to="/signup"
                 >
                     Sign up here
@@ -49,12 +41,12 @@
         </div>
 
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-            <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+            <div class="bg-gray-700 py-8 px-4 shadow sm:rounded-lg sm:px-10">
                 <form class="space-y-6" :action="login" method="POST">
                     <div>
                         <label
                             for="email"
-                            class="block text-sm font-medium text-gray-700"
+                            class="block text-sm font-medium text-gray-300"
                         >
                             Email address
                         </label>
@@ -72,13 +64,13 @@
                                     w-full
                                     px-3
                                     py-2
-                                    border border-gray-300
+                                    border border-gray-800
                                     rounded-md
                                     shadow-sm
-                                    placeholder-gray-400
+                                    placeholder-gray-600
                                     focus:outline-none
-                                    focus:ring-indigo-500
-                                    focus:border-indigo-500
+                                    focus:ring-indigo-400
+                                    focus:border-indigo-400
                                     sm:text-sm
                                 "
                             />
@@ -88,7 +80,7 @@
                     <div>
                         <label
                             for="password"
-                            class="block text-sm font-medium text-gray-700"
+                            class="block text-sm font-medium text-gray-300"
                         >
                             Password
                         </label>
@@ -106,7 +98,7 @@
                                     w-full
                                     px-3
                                     py-2
-                                    border border-gray-300
+                                    border border-gray-800
                                     rounded-md
                                     shadow-sm
                                     placeholder-gray-400
@@ -121,14 +113,14 @@
 
                     <!-- <div class="flex items-center justify-between">
             <div class="flex items-center">
-              <input id="remember_me" name="remember_me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
+              <input id="remember_me" name="remember_me" type="checkbox" class="h-4 w-4 text-indigo-400 focus:ring-indigo-500 border-gray-800 rounded" />
               <label for="remember_me" class="ml-2 block text-sm text-gray-900">
                 Remember me
               </label>
             </div> -->
 
                     <!-- <div class="text-sm">
-            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+            <a href="#" class="font-medium text-indigo-400 hover:text-indigo-300">
               Forgot your password?
             </a>
           </div> -->

@@ -25,13 +25,16 @@
                 >
                     Develop with superpowers
                 </p>
-                <p class="max-w-xl mt-5 mx-auto text-xl text-gray-400">
-                    Superpowers is a software company providing state-of-the-art
-                    computer vision capabilities through a powerful API at any
-                    scale.
-                </p>
+                <div class="max-w-xl mt-5 mx-auto text-gray-400">
+                    <p class="text-xl">
+                        Superpowers is a software company providing
+                        state-of-the-art computer vision capabilities through a
+                        powerful API at any scale.
+                    </p>
+                </div>
             </div>
         </div>
+        <section-about-focus class="mt-10" />
     </div>
 </template>
 

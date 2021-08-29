@@ -2,6 +2,8 @@
 
 import { Model } from '@vuex-orm/core'
 import Param from './Param'
+import Faq from './Faq'
+
 
 
 
@@ -35,6 +37,7 @@ export default class Request extends Model {
 
         // relationships
         request_params: this.hasMany(Param, 'request_param_public_id', 'public_id'),
+        faqs: this.hasMany(Faq, 'request_param_public_id', 'public_id'),
       }
     }
 }
