@@ -1,6 +1,15 @@
 <template>
     <div
-        class="min-h-screen flex flex-col justify-center py-10 sm:px-6 lg:px-8"
+        class="
+            flex flex-col
+            py-4
+            sm:py-8
+            md:py-10
+            lg:py-12
+            xl:py-14
+            sm:px-6
+            lg:px-8
+        "
     >
         <transition
             enter-active-class="transition ease-out duration-100 transform"
@@ -31,7 +40,7 @@
             <p class="mt-2 text-center text-sm text-gray-400 max-w">
                 You don't have an account yet?
                 <nuxt-link
-                    class="font-medium text-indigo-400 hover:text-indigo-300"
+                    class="font-medium text-teal-400 hover:text-teal-300"
                     to="/signup"
                 >
                     Sign up here
@@ -69,8 +78,8 @@
                                     shadow-sm
                                     placeholder-gray-600
                                     focus:outline-none
-                                    focus:ring-indigo-400
-                                    focus:border-indigo-400
+                                    focus:ring-teal-400
+                                    focus:border-teal-400
                                     sm:text-sm
                                 "
                             />
@@ -103,8 +112,8 @@
                                     shadow-sm
                                     placeholder-gray-400
                                     focus:outline-none
-                                    focus:ring-indigo-500
-                                    focus:border-indigo-500
+                                    focus:ring-teal-500
+                                    focus:border-teal-500
                                     sm:text-sm
                                 "
                             />
@@ -113,14 +122,14 @@
 
                     <!-- <div class="flex items-center justify-between">
             <div class="flex items-center">
-              <input id="remember_me" name="remember_me" type="checkbox" class="h-4 w-4 text-indigo-400 focus:ring-indigo-500 border-gray-800 rounded" />
+              <input id="remember_me" name="remember_me" type="checkbox" class="h-4 w-4 text-teal-400 focus:ring-teal-500 border-gray-800 rounded" />
               <label for="remember_me" class="ml-2 block text-sm text-gray-900">
                 Remember me
               </label>
             </div> -->
 
                     <!-- <div class="text-sm">
-            <a href="#" class="font-medium text-indigo-400 hover:text-indigo-300">
+            <a href="#" class="font-medium text-teal-400 hover:text-teal-300">
               Forgot your password?
             </a>
           </div> -->
@@ -141,12 +150,12 @@
                                 text-sm
                                 font-medium
                                 text-white
-                                bg-indigo-600
-                                hover:bg-indigo-700
+                                bg-teal-600
+                                hover:bg-teal-700
                                 focus:outline-none
                                 focus:ring-2
                                 focus:ring-offset-2
-                                focus:ring-indigo-500
+                                focus:ring-teal-500
                             "
                         >
                             Sign in
