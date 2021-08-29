@@ -2,7 +2,7 @@
     <div class="body text-gray-300 bg-gray-800">
         <the-header />
         <nuxt />
-        <the-footer class="footer" />
+        <the-footer />
     </div>
 </template>
 
