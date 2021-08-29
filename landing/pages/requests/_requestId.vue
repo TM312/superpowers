@@ -1,9 +1,13 @@
 <template>
     <div class="py-16">
         <section-request-details class="max-w-7xl mx-auto" :request="request" />
+        <section-request-test
+            class="mx-auto mt-4 md:mt-6 lg:mt-10 xl:mt-12"
+            :request="request"
+        />
         <section-request-faqs
             v-if="request.faqs"
-            class="mx-auto mt-10 md:12 lg:16 xl:20"
+            class="mx-auto mt-4 md:mt-6 lg:mt-10 xl:mt-12"
             :faqs="request.faqs"
         />
     </div>
