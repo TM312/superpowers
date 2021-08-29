@@ -8,7 +8,7 @@
                 flex-shrink-0
                 text-gray-400
                 focus:outline-none
-                focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+                focus:ring-2 focus:ring-offset-2 focus:ring-teal-500
                 text-sm
                 font-medium
                 rounded-md
@@ -40,9 +40,9 @@
                 from-teal-500
                 to-emerald-800
                 border border-teal-700
-                hover:bg-indigo-700
+                hover:bg-teal-700
                 focus:outline-none
-                focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+                focus:ring-2 focus:ring-offset-2 focus:ring-teal-500
             "
         >
             Sign Up
@@ -55,7 +55,7 @@
         name: "NavbarDesktopRight",
         data() {
             return {
-                active: "bg-teal-700 text-gray-100",
+                active: "bg-gray-700 text-gray-100",
                 inactive: "text-gray-300 hover:bg-gray-700 hover:text-white",
             };
         },
