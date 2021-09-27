@@ -44,7 +44,7 @@ def lambda_handler(event, context):
     if request_body is not None:
         data = request_body["data"].get("data", [])
         services = request_body["data"].get("services", {})
-        visualization = request_body["data"].get("visualization", {})
+        # visualization = request_body["data"].get("visualization", {})
 
     # # retrieve data
     # if not isinstance(data, list):
@@ -62,14 +62,14 @@ def lambda_handler(event, context):
             log.error(e)
             raise e
 
-    # apply visualization
-    if len(visualization.keys()) > 0:
-        try:
-            parent_element = _visualization_handler(visualization)
-            data = str(data[0]) if isinstance(data, list) else str(data)
-            data = f"<{ parent_element }>{data}</{ parent_element }>"
-        except Exception as e:
-            raise e
+    # # apply visualization
+    # if len(visualization.keys()) > 0:
+    #     try:
+    #         parent_element = _visualization_handler(visualization)
+    #         data = str(data[0]) if isinstance(data, list) else str(data)
+    #         data = f"<{ parent_element }>{data}</{ parent_element }>"
+    #     except Exception as e:
+    #         raise e
 
     return {
         "statusCode": 200,
@@ -125,7 +125,7 @@ def _service_handler(data: list, services: list):
     return data
 
 
-def _visualization_handler(visualization: dict) -> str:
+# def _visualization_handler(visualization: dict) -> str:
 
-    if "renderType" in visualization and visualization["renderType"] == "basic":
-        return visualization.get("mainElement", "span")
+#     if "renderType" in visualization and visualization["renderType"] == "basic":
+#         return visualization.get("mainElement", "span")
