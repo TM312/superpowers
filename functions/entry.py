@@ -3,7 +3,7 @@ import logging
 import json
 import os
 
-client = boto3.client("lambda")
+lambda_client = boto3.client("lambda")
 
 log = logging.getLogger()
 log.setLevel(logging.INFO)
@@ -84,7 +84,7 @@ def lambda_handler(event, context):
 
 # def _data_handler(data: dict, inputParams: dict) -> dict:
 
-#     response = client.invoke(
+#     response = lambda_client.invoke(
 #         FunctionName="arn:aws:lambda:eu-west-1:890277245818:function:DataHandler",
 #         InvocationType="RequestResponse",
 #         Payload=json.dumps(inputParams),
@@ -108,7 +108,7 @@ def _service_handler(data: list, services: list):
 
             try:
                 payload = {"data": data, "config": config}
-                res = client.invoke(
+                res = lambda_client.invoke(
                     FunctionName=service_dict[name],
                     InvocationType="RequestResponse",
                     Payload=json.dumps(payload),
