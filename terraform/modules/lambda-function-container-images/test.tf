@@ -1,34 +1,40 @@
-# AWSLambda
-module "lambda_container_test" {
-  source     = "${path.root}/../functions/"
-  depends_on = [null_resource.initial_image_test]
-
-  function_name = "lambda_test_${var.env}"
-
-  create_package = false
-  image_uri      = module.docker_image_test.image_uri
-  package_type   = "Image"
+locals {
+  path_to_container = "${path.root}/../functions/test_container"
+  image_tag         = "1.0"
 }
 
-module "docker_image_test" {
-  source = "${path.root}/../functions/test_container"
-
-  create_ecr_repo = true
-  ecr_repo        = aws_ecr_repository.lambda_function_container_repository.name
-  image_tag       = "1.0"
+data "aws_ecr_image" "lambda_container_test_image" {
+  depends_on      = [null_resource.ecr_image]
+  repository_name = aws_ecr_repository.lambda_function_container_repository.name
+  image_tag       = local.image_tag
 }
 
-resource "null_resource" "initial_image_test" {
+resource "aws_lambda_function" "lambda_container_test" {
+  depends_on = [
+    null_resource.ecr_image
+  ]
+  function_name = "lambda_container_test_${var.env}"
+  role          = var.lambda_execute_role_arn
+  image_uri     = "${aws_ecr_repository.lambda_function_container_repository.repository_url}@${data.aws_ecr_image.lambda_container_test_image.id}"
+  package_type  = "Image"
+}
+
+resource "null_resource" "ecr_image" {
   depends_on = [aws_ecr_repository.lambda_function_container_repository]
 
+  triggers = {
+    python_file = md5(file("${path_to_container}/index.py"))
+    docker_file = md5(file("${path_to_container}/Dockerfile"))
+  }
+
   provisioner "local-exec" {
-    command     = "docker build --tag ${aws_ecr_repository.lambda_function_container_repository.repository_url}:${var.env} ."
-    working_dir = "${path.root}/../functions/test_container"
+    command     = "docker build --tag ${aws_ecr_repository.lambda_function_container_repository.repository_url}:${var.env}-${local.image_tag} ."
+    working_dir = local.path_to_container
   }
 
   provisioner "local-exec" {
     command     = "docker push --all-tags ${aws_ecr_repository.lambda_function_container_repository.repository_url}"
-    working_dir = "${path.root}/../functions/test_container"
+    working_dir = local.path_to_container
   }
 }
 

@@ -32,3 +32,12 @@ module "lambda_layers" {
   project_name = var.project_name
 
 }
+
+module "lambda_layers_container_images" {
+  source = "./modules/lambda-layers-container-images"
+
+  project_name            = var.project_name
+  lambda_execute_role_arn = module.roles_permissions.lambda_execute_role_arn
+
+
+}
