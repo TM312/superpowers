@@ -10,16 +10,32 @@ log.setLevel(logging.INFO)
 
 BASE_ARN_LAMBDA = "arn:aws:lambda:ap-southeast-1:046111613375:function:"
 
+
+services = [
+    "get_sum",
+    "get_round",
+    "get_summary",
+    "get_text_analysis",
+    "container_test",
+]
+
 service_dict = {
-    "get_sum": f"{BASE_ARN_LAMBDA}lambda_get_sum_{os.getenv('env')}",
-    "get_round": f"{BASE_ARN_LAMBDA}lambda_get_round_{os.getenv('env')}",
-    "get_summary": f"{BASE_ARN_LAMBDA}lambda_get_summary_{os.getenv('env')}",
-    "get_text_analysis": f"{BASE_ARN_LAMBDA}lambda_get_text_analysis_{os.getenv('env')}",
+    service: f"{BASE_ARN_LAMBDA}lambda_{service}_{os.getenv('env')}"
+    for service in services
 }
 
-CORS = (
-    "*"  # if os.getenv("env") != "prod" else "https://festive-noyce-66178c.netlify.app"
-)
+# service_dict = {
+#     "get_sum": f"{BASE_ARN_LAMBDA}lambda_get_sum_{os.getenv('env')}",
+#     "get_round": f"{BASE_ARN_LAMBDA}lambda_get_round_{os.getenv('env')}",
+#     "get_summary": f"{BASE_ARN_LAMBDA}lambda_get_summary_{os.getenv('env')}",
+#     "get_text_analysis": f"{BASE_ARN_LAMBDA}lambda_get_text_analysis_{os.getenv('env')}",
+#     "test": f"{BASE_ARN_LAMBDA}lambda_test_{os.getenv('env')}",
+# }
+
+CORS = "*"
+# (
+#     "*"  # if os.getenv("env") != "prod" else "https://festive-noyce-66178c.netlify.app"
+# )
 
 
 def lambda_handler(event, context):
@@ -37,13 +53,11 @@ def lambda_handler(event, context):
     data = []
     services = []
 
-    request_body = (
-        json.loads(event.get("body")) if event.get("body") is not None else None
-    )
+    request_body = json.loads(event["body"]) if "body" in event else None
 
     if request_body is not None:
-        data = request_body["data"].get("data", [])
-        services = request_body["data"].get("services", {})
+        data = request_body.get("data", [])
+        services = request_body.get("services", [])
         # visualization = request_body["data"].get("visualization", {})
 
     # # retrieve data
@@ -57,7 +71,7 @@ def lambda_handler(event, context):
     if services is not None:
         try:
             data = _service_handler(data, services)
-            log.error(data)
+            log.error("data in services: %r", data)
         except Exception as e:
             log.error(e)
             raise e
@@ -78,7 +92,7 @@ def lambda_handler(event, context):
             "Access-Control-Allow-Origin": CORS,
             "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
         },
-        "body": data,
+        "body": json.dumps(data),
     }
 
 

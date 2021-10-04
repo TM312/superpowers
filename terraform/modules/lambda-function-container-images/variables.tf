@@ -8,3 +8,8 @@ variable "env" {
   type        = string
   description = "The deployment environment name"
 }
+
+variable "region" {
+  type        = string
+  description = "AWS Region"
+}

@@ -5,8 +5,12 @@
 # $ export AWS_SECRET_ACCESS_KEY=<stored-in-1Password>
 # $ export AWS_DEFAULT_REGION=<stored-in-1Password>
 
-provider "aws" {
+locals {
   region = "ap-southeast-1"
+}
+
+provider "aws" {
+  region = local.region
 } #
 
 module "lambda_functions" {
@@ -33,11 +37,12 @@ module "lambda_layers" {
 
 }
 
-module "lambda_layers_container_images" {
-  source = "./modules/lambda-layers-container-images"
+module "lambda_function_container_images" {
+  source = "./modules/lambda-function-container-images"
 
-  project_name            = var.project_name
   lambda_execute_role_arn = module.roles_permissions.lambda_execute_role_arn
+  env                     = var.env
+  region                  = local.region
 
 
 }
