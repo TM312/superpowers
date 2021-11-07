@@ -10,8 +10,7 @@ log.setLevel(logging.INFO)
 
 BASE_ARN_LAMBDA = "arn:aws:lambda:ap-southeast-1:046111613375:function:"
 
-
-services = [
+SERVICES = [
     "get_sum",
     "get_round",
     "get_summary",
@@ -21,16 +20,8 @@ services = [
 
 service_dict = {
     service: f"{BASE_ARN_LAMBDA}lambda_{service}_{os.getenv('env')}"
-    for service in services
+    for service in SERVICES
 }
-
-# service_dict = {
-#     "get_sum": f"{BASE_ARN_LAMBDA}lambda_get_sum_{os.getenv('env')}",
-#     "get_round": f"{BASE_ARN_LAMBDA}lambda_get_round_{os.getenv('env')}",
-#     "get_summary": f"{BASE_ARN_LAMBDA}lambda_get_summary_{os.getenv('env')}",
-#     "get_text_analysis": f"{BASE_ARN_LAMBDA}lambda_get_text_analysis_{os.getenv('env')}",
-#     "test": f"{BASE_ARN_LAMBDA}lambda_test_{os.getenv('env')}",
-# }
 
 CORS = "*"
 # (
@@ -41,24 +32,31 @@ CORS = "*"
 def lambda_handler(event, context):
 
     if event["httpMethod"] == "OPTIONS":
-        return {
-            "statusCode": 200,
-            "headers": {
-                "Access-Control-Allow-Headers": "Content-Type",
-                "Access-Control-Allow-Origin": CORS,
-                "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-            },
-        }
+        return _response_handler()
 
-    data = []
-    services = []
+    elif event["httpMethod"] == "POST":
+        body_field = event.get("body")
+        if not isinstance(body_field, dict):
+            try:
+                request_body = json.loads(body_field)
+            except Exception as e:
+                # !!! TODO: Exception handler method
+                return _response_handler(message=str(e))
 
-    request_body = json.loads(event["body"]) if "body" in event else None
+            if request_body is None:
+                # !!! TODO: Exception handler method
+                return _response_handler(message="empty")
 
-    if request_body is not None:
-        data = request_body.get("data", [])
-        services = request_body.get("services", [])
-        # visualization = request_body["data"].get("visualization", {})
+        else:
+            # !!! TODO: Exception handler method
+            return _response_handler(message="reject")
+
+    else:
+        # !!! TODO: Exception handler method
+        return _response_handler(message="reject")
+
+    data = request_body.get("data", [])
+    services = request_body.get("services", [])
 
     # # retrieve data
     # if not isinstance(data, list):
@@ -76,36 +74,7 @@ def lambda_handler(event, context):
             log.error(e)
             raise e
 
-    # # apply visualization
-    # if len(visualization.keys()) > 0:
-    #     try:
-    #         parent_element = _visualization_handler(visualization)
-    #         data = str(data[0]) if isinstance(data, list) else str(data)
-    #         data = f"<{ parent_element }>{data}</{ parent_element }>"
-    #     except Exception as e:
-    #         raise e
-
-    return {
-        "statusCode": 200,
-        "headers": {
-            "Access-Control-Allow-Headers": "Content-Type",
-            "Access-Control-Allow-Origin": CORS,
-            "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-        },
-        "body": json.dumps(data),
-    }
-
-
-# def _data_handler(data: dict, inputParams: dict) -> dict:
-
-#     response = lambda_client.invoke(
-#         FunctionName="arn:aws:lambda:eu-west-1:890277245818:function:DataHandler",
-#         InvocationType="RequestResponse",
-#         Payload=json.dumps(inputParams),
-#     )
-
-#     data = json.load(response["Payload"])
-#     return data
+    return _response_handler(body=json.dumps(data))
 
 
 def _service_handler(data: list, services: list):
@@ -139,7 +108,31 @@ def _service_handler(data: list, services: list):
     return data
 
 
-# def _visualization_handler(visualization: dict) -> str:
+def _response_handler(
+    message: str = None, body: str = None, status_code: int = 200
+) -> dict:
+    response_dict = {
+        "statusCode": status_code,
+        "headers": {
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Origin": CORS,
+            "Access-Control-Allow-Methods": "OPTIONS,POST",
+        },
+        "message": message,
+        "body": body,
+    }
+    response_dict = {k: v for k, v in response_dict.items() if v is not None}
 
-#     if "renderType" in visualization and visualization["renderType"] == "basic":
-#         return visualization.get("mainElement", "span")
+    return response_dict
+
+
+# def _data_handler(data: dict, inputParams: dict) -> dict:
+
+#     response = lambda_client.invoke(
+#         FunctionName="arn:aws:lambda:eu-west-1:890277245818:function:DataHandler",
+#         InvocationType="RequestResponse",
+#         Payload=json.dumps(inputParams),
+#     )
+
+#     data = json.load(response["Payload"])
+#     return data
