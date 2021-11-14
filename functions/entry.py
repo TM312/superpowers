@@ -41,7 +41,7 @@ def lambda_handler(event, context):
                 request_body = json.loads(body_field)
             except Exception as e:
                 # !!! TODO: Exception handler method
-                return _response_handler(message=str(e))
+                return _response_handler(message=str(e), status_code=500)
 
             if request_body is None:
                 # !!! TODO: Exception handler method
