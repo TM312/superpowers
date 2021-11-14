@@ -2,14 +2,7 @@
 <template>
     <div class="bg-gray-700 shadow overflow-hidden sm:rounded-lg">
         <div class="px-4 py-5 sm:px-6">
-            <h3
-                class="text-lg leading-6 font-medium text-gray-200"
-                v-text="request.name"
-            />
-            <p
-                class="mt-1 max-w-2xl text-sm text-gray-400"
-                v-text="request.description"
-            />
+            <h3 class="text-lg leading-6 font-medium text-gray-200">Details</h3>
         </div>
         <div class="border-t border-gray-900 px-4 py-5 sm:px-6">
             <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
@@ -29,7 +22,7 @@
                 <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-400">Price</dt>
                     <dd class="mt-1 text-sm text-gray-200">
-                        US{{ request.price }} per request
+                        US${{ request.price }} per request
                     </dd>
                 </div>
                 <div class="sm:col-span-1">

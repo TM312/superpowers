@@ -1,15 +1,17 @@
 <template>
     <div class="py-16">
-        <section-request-details class="max-w-7xl mx-auto" :request="request" />
-        <section-request-test
-            class="mx-auto mt-4 md:mt-6 lg:mt-10 xl:mt-12"
-            :request="request"
+        <section-request-header
+            class="max-w-7xl mx-auto"
+            :name="request.name"
+            :description="request.description"
         />
-        <section-request-faqs
-            v-if="request.faqs"
-            class="mx-auto mt-4 md:mt-6 lg:mt-10 xl:mt-12"
-            :faqs="request.faqs"
-        />
+        <div
+            class="max-w-7xl mx-auto mt-4 md:mt-6 lg:mt-10 xl:mt-12 space-y-20"
+        >
+            <section-request-details :request="request" />
+            <section-request-test :request="request" />
+            <section-request-faqs v-if="request.faqs" :faqs="request.faqs" />
+        </div>
     </div>
 </template>
 

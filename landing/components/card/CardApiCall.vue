@@ -20,7 +20,7 @@
                     :to="`/requests/${request.public_id}`"
                     class="font-medium text-gray-400 hover:text-gray-300"
                 >
-                    More details
+                    Details
                     <span
                         class="transform hover:translate-x-1"
                         aria-hidden="true"

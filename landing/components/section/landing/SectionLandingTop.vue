@@ -8,8 +8,7 @@
                 py-12
                 px-4
                 sm:px-6
-                lg:py-16
-                lg:px-8
+                lg:py-16 lg:px-8
             "
         >
             <h2
@@ -21,7 +20,7 @@
                     sm:text-6xl
                 "
             >
-                <span class="block">API Reimagined</span>
+                <span class="block">Permissionless APIs</span>
             </h2>
             <p
                 class="
@@ -33,8 +32,8 @@
                     text-indigo-200
                 "
             >
-                A suite of data, services, and rendering that can be freely
-                configured through a simple API.
+                Superpowers is an API as a service provider. We provide
+                computations of any kind at any scale through a consistent API.
             </p>
         </div>
     </section>

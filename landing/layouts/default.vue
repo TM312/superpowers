@@ -1,5 +1,5 @@
 <template>
-    <div class="body text-gray-300 bg-gray-800">
+    <div class="text-gray-300 bg-gray-800">
         <the-header />
         <nuxt />
         <the-footer />
@@ -27,9 +27,12 @@
 </script>
 
 <style>
-    .body {
-        height: 100vh;
-        margin: 0;
+    html {
+        height: 100%;
+    }
+
+    body {
+        min-height: 100%;
     }
 
     .fade-enter-active,
