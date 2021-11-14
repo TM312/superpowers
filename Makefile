@@ -1,5 +1,7 @@
 ENV=dev
 
+
+# AWS HANDLING
 # to store config for different environments
 tf-create-workspace:
 	cd terraform && \
@@ -38,3 +40,12 @@ tf-list:
 # tf-layer:
 # 	cd terraform/modules/lambda-layers && \
 # 	docker run -v "${PWD}/terraform/modules/lambda-layers":/var/task "lambci/lambda:build-python${VERSION}" /bin/sh -c "pip install --no-deps -r ${PWD}/terraform/modules/lambda-layers/requirements_${NAME}.txt -t ${NAME}/python/lib/python3.8/site-packages/; exit"
+
+
+
+
+
+# LANDING PAGE HANDLING
+ldev:
+	cd landing && \
+	yarn run dev
