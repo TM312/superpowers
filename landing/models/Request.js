@@ -1,11 +1,9 @@
-// LogType Model
+// Request Model
 
 import { Model } from '@vuex-orm/core'
-import Param from './Param'
 import Faq from './Faq'
-
-
-
+import Param from './Param'
+import RequestParamsSample from './RequestParamsSample'
 
 
 export default class Request extends Model {
@@ -36,6 +34,7 @@ export default class Request extends Model {
 
 
         // relationships
+        request_params_sample: this.hasOne(RequestParamsSample, 'request_public_id'),
         request_params: this.hasMany(Param, 'request_param_public_id', 'public_id'),
         faqs: this.hasMany(Faq, 'request_param_public_id', 'public_id'),
       }

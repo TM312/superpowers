@@ -44,6 +44,38 @@ export default async function data() {
           a: 'It can scale nothing.'
         }
       ]
+    },
+    {
+      public_id: 'get-round',
+      name: 'Get Round',
+      description: 'Round an array of numeric values.',
+      updated_at: '2021-11-16',
+      price: 0.001,
+      response_time: 200,
+      regions: ['US East', 'Southeast Asia'],
+      request_params_sample: {
+        request_public_id: 'get-round',
+        service_name: 'get_round',
+        service_config: {
+          decPlaces: {
+            name: "Decimal Places",
+            options: [0,1,2,3,4,5]
+          },
+          roundType: {
+              name: "Rounding Type",
+              options: ["default", "ceil", "floor", "truncate"]
+          }
+        },
+        data: "1.32, 2.35, 5.11, 71.2996"
+      },
+      // ],
+      faqs: [
+        {
+          request_param_public_id: 'superscale',
+          q: 'What can this image scale?',
+          a: 'It can scale nothing.'
+        }
+      ]
     }
   ]
 }

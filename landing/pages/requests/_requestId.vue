@@ -6,7 +6,18 @@
             :description="request.description"
         />
         <div
-            class="max-w-7xl mx-auto mt-4 md:mt-6 lg:mt-10 xl:mt-12 space-y-20"
+            class="
+                max-w-7xl
+                mx-auto
+                mt-4
+                md:mt-6
+                lg:mt-10
+                xl:mt-12
+                space-y-20
+                px-4
+                sm:px-6
+                lg:px-8
+            "
         >
             <section-request-details :request="request" />
             <section-request-test :request="request" />

@@ -27,14 +27,6 @@
 </script>
 
 <style>
-    html {
-        height: 100%;
-    }
-
-    body {
-        min-height: 100%;
-    }
-
     .fade-enter-active,
     .fade-leave-active {
         transition: opacity 0.3s;
