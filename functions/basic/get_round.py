@@ -41,10 +41,13 @@ def lambda_handler(event, context) -> Union[int, float]:
 
 
 def _perform_round(element: Union[int, float], config):
-    if "decPlaces" in config and isinstance(config["decPlaces"], int):
-        return round(element, config["decPlaces"])
 
-    if "roundType" in config and isinstance(config["roundType"], str):
+    if "roundType" in config and config["roundType"] in [
+        "ceil",
+        "floor",
+        "truncate",
+        "default",
+    ]:
         if config["roundType"] == "ceil":
             value = math.ceil(element)
 
@@ -54,9 +57,12 @@ def _perform_round(element: Union[int, float], config):
         elif config["roundType"] == "truncate":
             value = int(element)
 
+        elif config["roundType"] == "default":
+            value = element
+
         else:
             return False
 
-        return value
+        return round(value, config.get("decPlaces", 2))
 
-    return round(element, 2)
+    return round(element, config.get("decPlaces", 2))
