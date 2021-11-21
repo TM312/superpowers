@@ -32,8 +32,8 @@
                     text-indigo-200
                 "
             >
-                Superpowers is an API as a service provider. We provide
-                computations of any kind at any scale through a consistent API.
+                Deploy and request computations of any kind at any scale through
+                a consistent API.
             </p>
         </div>
     </section>

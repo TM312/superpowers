@@ -2,13 +2,13 @@
 
 import { Model } from '@vuex-orm/core'
 import Faq from './Faq'
-import Param from './Param'
-import RequestParamsSample from './RequestParamsSample'
+import SampleParams from './SampleParams'
+import ParamDocs from './ParamDocs'
 
 
-export default class Request extends Model {
+export default class RequestDocs extends Model {
 
-    static entity = 'requests'
+    static entity = 'request-docs'
 
     static primaryKey = 'public_id'
 
@@ -34,9 +34,9 @@ export default class Request extends Model {
 
 
         // relationships
-        request_params_sample: this.hasOne(RequestParamsSample, 'request_public_id'),
-        request_params: this.hasMany(Param, 'request_param_public_id', 'public_id'),
-        faqs: this.hasMany(Faq, 'request_param_public_id', 'public_id'),
+        param_docs: this.hasMany(ParamDocs, 'request_docs_public_id'),
+        sample_params: this.hasOne(SampleParams, 'request_docs_public_id'),
+        faqs: this.hasMany(Faq, 'request_docs_public_id'),
       }
     }
 }

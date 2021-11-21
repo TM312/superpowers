@@ -1,14 +1,10 @@
-// LogType Model
+// SampleParams Model
 
 import { Model } from '@vuex-orm/core'
 
+export default class SampleParams extends Model {
 
-
-export default class Param extends Model {
-
-    static entity = 'params'
-
-
+    static entity = 'sample-params'
 
     // // Reference to base entity name.
     // static baseEntity = 'base'
@@ -20,14 +16,15 @@ export default class Param extends Model {
         // Base
         id: this.uid(),
         name: this.string(''),
-        description: this.string(''),
+
+        // relationships
+        request_docs_public_id: this.string(''),
 
 
         // attributes
-        p_type: this.string(''),
-        required: this.boolean(true).nullable(),
-        default: this.attr('').nullable(),
-        request_param_public_id: this.string('')
+        service_name: this.string(''),
+        data: this.attr(null),
+        config: this.attr(null)
 
       }
     }

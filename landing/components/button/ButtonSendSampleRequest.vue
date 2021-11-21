@@ -1,9 +1,9 @@
 <template>
     <div>
-        serviceData: {{ serviceData }} <br />
         serviceName: {{ serviceName }} <br />
-        serviceConfig: {{ serviceConfig }} <br />
-        <button
+        serviceDataDefault: {{ serviceDataDefault }} <br />
+        serviceConfigDefault: {{ serviceConfigDefault }} <br />
+        <!-- <button
             type="button"
             class="
                 inline-flex
@@ -25,11 +25,11 @@
             "
         >
             <solid-paper-airplane-icon
-                class="h-5 w-5 text-gray-400"
+                class="h-5 w-5 mr-2 text-gray-400 transform rotate-90"
                 aria-hidden="true"
             />
             Send Request
-        </button>
+        </button> -->
     </div>
 </template>
 
@@ -56,6 +56,7 @@
                 serviceConfig: {},
             };
         },
+
         created() {
             this.$nuxt.$on("dataSelected", ($event) => {
                 console.log("dataSelected", $event);
@@ -70,12 +71,10 @@
             });
         },
         mounted() {
+            this.serviceConfig = this.serviceConfigDefault;
             this.serviceData = this.serviceDataDefault;
-
-            for (const [key, value] of Object.entries(this.serviceConfigDefault)) {
-                this.serviceConfig[key] = value.options[0];
-            }
         },
+
         methods: {
             updateServiceConfig(configKey, configValue) {
                 this.$set(this.serviceConfig, configKey, configValue);

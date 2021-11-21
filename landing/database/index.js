@@ -1,17 +1,17 @@
 import { Database } from '@vuex-orm/core'
 import Base from '@/models/Base'
-import Request from '@/models/Request'
-import RequestParamsSample from '~/models/RequestParamsSample'
-import Param from '@/models/Param'
+import RequestDocs from '~/models/RequestDocs'
+import ParamDocs from '~/models/ParamDocs'
+import SampleParams from '~/models/SampleParams'
 import Faq from '@/models/Faq'
 
 
 const database = new Database()
 
 database.register(Base)
-database.register(Request)
-database.register(RequestParamsSample)
-database.register(Param)
+database.register(RequestDocs)
+database.register(ParamDocs)
+database.register(SampleParams)
 database.register(Faq)
 
 

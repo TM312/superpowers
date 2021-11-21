@@ -17,7 +17,7 @@
             requests() {
                 return this.$store
                     .$db()
-                    .model("requests")
+                    .model("request-docs")
                     .query()
                     .with("id")
                     .with("name")

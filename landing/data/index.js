@@ -32,14 +32,14 @@ export default async function data() {
       price: 0.001,
       response_time: 200,
       regions: ['US East', 'Southeast Asia'],
-      // request_params: [
-      //   { request_param_public_id: 'superscale', name: 'Test', description: 'We aregoing to add a description here', p_type: 'int', required: true, default: 'None' },
-      //   { request_param_public_id: 'superscale', name: 'Test2', description: 'Another description', p_type: 'str', required: true, default: 'DEFAULT' }
+      // params_doc: [
+      //   { request_docs_public_id: 'superscale', name: 'Test', description: 'We aregoing to add a description here', p_type: 'int', required: true, default: 'None' },
+      //   { request_docs_public_id: 'superscale', name: 'Test2', description: 'Another description', p_type: 'str', required: true, default: 'DEFAULT' }
 
       // ],
       faqs: [
         {
-          request_param_public_id: 'superscale',
+          request_docs_public_id: 'superscale',
           q: 'What can this image scale?',
           a: 'It can scale nothing.'
         }
@@ -53,25 +53,36 @@ export default async function data() {
       price: 0.001,
       response_time: 200,
       regions: ['US East', 'Southeast Asia'],
-      request_params_sample: {
-        request_public_id: 'get-round',
-        service_name: 'get_round',
-        service_config: {
-          decPlaces: {
+      param_docs: [
+          {
+            key: "decPlaces",
+            request_docs_public_id: 'get-round',
             name: "Decimal Places",
             options: [0,1,2,3,4,5]
           },
-          roundType: {
-              name: "Rounding Type",
-              options: ["default", "ceil", "floor", "truncate"]
+          {
+            key: "roundType",
+            request_docs_public_id: 'get-round',
+            name: "Rounding Type",
+            options: ["default", "ceil", "floor", "truncate"]
           }
-        },
-        data: "1.32, 2.35, 5.11, 71.2996"
+
+        ],
+      sample_params: {
+        request_docs_public_id: 'get-round',
+        service_name: 'get_round',
+        data: "1.32, 2.35, 5.11, 71.2996",
+        config: {
+          decPlaces: 2,
+          roundType: "floor"
+        }
+
+
       },
       // ],
       faqs: [
         {
-          request_param_public_id: 'superscale',
+          request_docs_public_id: 'get-round',
           q: 'What can this image scale?',
           a: 'It can scale nothing.'
         }

@@ -23,7 +23,7 @@ export default class Faq extends Model {
         // attributes
         q: this.string(''),
         a: this.string(''),
-        request_param_public_id: this.string('')
+        request_docs_public_id: this.string('')
 
       }
     }

@@ -1,9 +1,38 @@
 <template>
     <div>
+        test: {{ test }}<br />
+        <button
+            class="
+                relative
+                w-full
+                bg-white
+                border border-gray-300
+                rounded-md
+                shadow-sm
+                pl-3
+                pr-10
+                py-2
+                text-left
+                cursor-default
+                focus:outline-none
+                focus:ring-1
+                focus:ring-indigo-500
+                focus:border-indigo-500
+                sm:text-sm
+                text-gray-700
+            "
+            aria-haspopup="listbox"
+            aria-expanded="true"
+            aria-labelledby="listbox-label"
+            type="button"
+            @click="updateName()"
+        >
+            Click me
+        </button>
         <label
             id="listbox-label"
             class="block text-sm font-medium text-gray-200"
-            v-text="serviceConfigOption.name"
+            v-text="paramName"
         />
         <div class="mt-1 relative">
             <button
@@ -80,7 +109,7 @@
                         role="listbox"
                         aria-labelledby="listbox-label"
                         aria-activedescendant="listbox-option-3"
-                        v-for="(option, i) in serviceConfigOption.options"
+                        v-for="(option, i) in paramOptions"
                         :key="i"
                     >
                         <li
@@ -144,12 +173,16 @@
     export default {
         name: "InputFieldServiceConfigSampleRequest",
         props: {
-            serviceConfigKey: {
-                type: String,
+            paramOptions: {
+                type: Array,
                 required: true,
             },
-            serviceConfigOption: {
-                type: Object,
+            paramConfigDefault: {
+                type: [String, Array, Number, Object],
+                required: true,
+            },
+            paramName: {
+                type: String,
                 required: true,
             },
         },
@@ -158,18 +191,19 @@
                 selected: null,
                 active: null,
                 menuOpen: false,
+                test: 1,
             };
         },
         mounted() {
-            this.selected = this.serviceConfigOption.options[0];
+            this.selected = this.paramConfigDefault;
         },
+
         methods: {
             selectAndClose(option) {
                 this.selected = option;
-                this.$nuxt.$emit("configSelected", {
-                    key: this.serviceConfigKey,
-                    value: option,
-                });
+
+                this.$emit("paramOptionSelected", option);
+
                 this.menuOpen = false;
             },
         },
