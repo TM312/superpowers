@@ -20,7 +20,7 @@
                     text-gray-900
                 "
                 :value="serviceDataDefault"
-                @input="$emit('dataSelected', $event.target.value)"
+                @input="updateRequestData($event.target.value)"
             />
         </div>
     </div>
@@ -33,6 +33,26 @@
             serviceDataDefault: {
                 type: String,
                 required: true,
+            },
+            sampleParamsPublicId: {
+                type: String,
+                required: true,
+            },
+        },
+         computed: {
+            SampleParams() {
+                return this.$store.$db().model("sample-params");
+            },
+        },
+       
+        methods: {
+            updateRequestData(value) {
+                this.SampleParams.update({
+                    where: this.sampleParamsPublicId,
+                    data: {
+                        data: value,
+                    },
+                });
             },
         },
     };

@@ -6,7 +6,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <input-field-data-sample-request
                     :service-data-default="sampleParams.data"
-                    @dataSelected="updateRequestData($event)"
+                    :sample-params-public-id="sampleParams.public_id"
                 />
 
                 <div v-for="(param, i) in paramDocs" :key="i">
@@ -57,17 +57,6 @@
                     .where("request_docs_public_id", this.requestPublicId)
                     .withAll()
                     .first();
-            },
-        },
-       
-        methods: {
-            updateRequestData(value) {
-                this.SampleParams.update({
-                    where: this.sampleParams.id,
-                    data: {
-                        data: value,
-                    },
-                });
             },
         },
     };
