@@ -1,10 +1,13 @@
 // SampleParams Model
 
 import { Model } from '@vuex-orm/core'
+import ConfigParam from './ConfigParam'
 
 export default class SampleParams extends Model {
 
     static entity = 'sample-params'
+
+    static primaryKey = 'public_id'
 
     // // Reference to base entity name.
     // static baseEntity = 'base'
@@ -15,17 +18,15 @@ export default class SampleParams extends Model {
       return {
         // Base
         id: this.uid(),
-        name: this.string(''),
+        public_id: this.string(''),
 
         // relationships
         request_docs_public_id: this.string(''),
 
-
         // attributes
         service_name: this.string(''),
         data: this.attr(null),
-        config: this.attr(null)
-
+        config: this.hasMany(ConfigParam, 'sample_params_public_id'),
       }
     }
 }

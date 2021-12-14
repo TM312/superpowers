@@ -20,7 +20,7 @@
                     text-gray-900
                 "
                 :value="serviceDataDefault"
-                @input="$nuxt.$emit('dataSelected', $event.target.value)"
+                @input="$emit('dataSelected', $event.target.value)"
             />
         </div>
     </div>

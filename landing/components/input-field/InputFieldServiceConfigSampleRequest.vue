@@ -1,34 +1,5 @@
 <template>
     <div>
-        test: {{ test }}<br />
-        <button
-            class="
-                relative
-                w-full
-                bg-white
-                border border-gray-300
-                rounded-md
-                shadow-sm
-                pl-3
-                pr-10
-                py-2
-                text-left
-                cursor-default
-                focus:outline-none
-                focus:ring-1
-                focus:ring-indigo-500
-                focus:border-indigo-500
-                sm:text-sm
-                text-gray-700
-            "
-            aria-haspopup="listbox"
-            aria-expanded="true"
-            aria-labelledby="listbox-label"
-            type="button"
-            @click="updateName()"
-        >
-            Click me
-        </button>
         <label
             id="listbox-label"
             class="block text-sm font-medium text-gray-200"
@@ -177,11 +148,15 @@
                 type: Array,
                 required: true,
             },
-            paramConfigDefault: {
-                type: [String, Array, Number, Object],
+            paramKey: {
+                type: String,
                 required: true,
             },
             paramName: {
+                type: String,
+                required: true,
+            },
+            sampleParamsPublicId: {
                 type: String,
                 required: true,
             },
@@ -191,21 +166,41 @@
                 selected: null,
                 active: null,
                 menuOpen: false,
-                test: 1,
             };
         },
+
+        computed: {
+            ConfigParam() {
+                return this.$store.$db().model("config-params");
+            },
+            configParam() {
+                return this.ConfigParam.query()
+                    .where("sample_params_public_id", this.sampleParamsPublicId)
+                    .where('key', this.paramKey)
+                    .first();
+            }
+        },
+        
         mounted() {
-            this.selected = this.paramConfigDefault;
+            this.selected = this.configParam.value;
         },
 
         methods: {
-            selectAndClose(option) {
-                this.selected = option;
+            selectAndClose(value) {
+                this.selected = value;
 
-                this.$emit("paramOptionSelected", option);
+                this.updateConfigParam(value)
 
                 this.menuOpen = false;
             },
+            
+            updateConfigParam(value) {
+                this.ConfigParam.update({
+                    where: this.configParam.id,
+                    data: { value: value}
+                });
+            },
+            
         },
     };
 </script>

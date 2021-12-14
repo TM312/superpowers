@@ -1,8 +1,10 @@
 <template>
     <div>
         serviceName: {{ serviceName }} <br />
-        serviceDataDefault: {{ serviceDataDefault }} <br />
-        serviceConfigDefault: {{ serviceConfigDefault }} <br />
+        serviceData: {{ serviceData }} <br />
+        <div v-for="config in serviceConfig" :key=config.id>
+            {{ config.key }} : {{ config.value }}
+        </div>
         <!-- <button
             type="button"
             class="
@@ -41,55 +43,45 @@
                 type: String,
                 required: true,
             },
-            serviceDataDefault: {
+            serviceData: {
                 type: String,
                 required: true,
             },
-            serviceConfigDefault: {
-                type: Object,
+            serviceConfig: {
+                type: Array,
                 required: true,
             },
         },
-        data() {
-            return {
-                serviceData: "",
-                serviceConfig: {},
-            };
-        },
 
-        created() {
-            this.$nuxt.$on("dataSelected", ($event) => {
-                console.log("dataSelected", $event);
-                this.serviceData = $event;
-            });
-            this.$nuxt.$on("configSelected", ($event) => {
-                console.log("configSelected > $event:", $event);
-                console.log("$event key:", $event.key);
-                console.log("$event value:", $event.value);
+        // created() {
+        //     this.$nuxt.$on("dataSelected", ($event) => {
+        //         console.log("dataSelected", $event);
+        //         this.serviceData = $event;
+        //     });
+        //     this.$nuxt.$on("configSelected", ($event) => {
+        //         console.log("configSelected > $event:", $event);
+        //         console.log("$event key:", $event.key);
+        //         console.log("$event value:", $event.value);
 
-                this.updateServiceConfig($event.key, $event.value);
-            });
-        },
-        mounted() {
-            this.serviceConfig = this.serviceConfigDefault;
-            this.serviceData = this.serviceDataDefault;
-        },
+        //         this.updateServiceConfig($event.key, $event.value);
+        //     });
+        // },
+      
+        // methods: {
+        //     updateServiceConfig(configKey, configValue) {
+        //         this.$set(this.serviceConfig, configKey, configValue);
+        //         // this.serviceConfig[configKey] = configValue;
+        //     },
 
-        methods: {
-            updateServiceConfig(configKey, configValue) {
-                this.$set(this.serviceConfig, configKey, configValue);
-                // this.serviceConfig[configKey] = configValue;
-            },
-
-            updateServiceData(data) {
-                this.serviceData = data;
-            },
-        },
-        beforeDestroy() {
-            // removes event listener
-            this.$nuxt.$off("dataSelected");
-            this.$nuxt.$off("configSelected");
-        },
+        //     updateServiceData(data) {
+        //         this.serviceData = data;
+        //     },
+        // },
+        // beforeDestroy() {
+        //     // removes event listener
+        //     this.$nuxt.$off("dataSelected");
+        //     this.$nuxt.$off("configSelected");
+        // },
     };
 </script>
 

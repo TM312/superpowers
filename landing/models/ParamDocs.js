@@ -2,9 +2,6 @@
 
 import { Model } from '@vuex-orm/core'
 
-
-
-
 export default class ParamDocs extends Model {
 
   static entity = 'param-docs'
