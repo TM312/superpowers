@@ -1,6 +1,7 @@
 # Configure the AWS Provider
 
 # Provider 'aws' is configured using env vars.
+# Configure aws credentials as ~/.aws/credentials as in https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
 # $ export AWS_ACCESS_KEY_ID=<stored-in-1Password>
 # $ export AWS_SECRET_ACCESS_KEY=<stored-in-1Password>
 # $ export AWS_DEFAULT_REGION=<stored-in-1Password>
