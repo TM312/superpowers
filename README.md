@@ -3,9 +3,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="#">
+  <!-- <a href="#">
     <img src="images/logo.png" alt="Superpowers Logo" width="197" height="62">
-  </a>
+  </a> -->
 
   <h3 align="center">S-U-P-E-R-P-O-W-E-R-S</h3>
 
@@ -36,21 +36,9 @@
 
 ## About
 
-- Project title
-- Project description (at this stage you can have few paragraphs or bullet points to describe what do you think the project is for)
-- Why are you building this? (rationale why is it’s needed, how it’s supporting your goals etc)
-- The owner (who is responsible for building or driving this if there are multiple people)
-
-
-
-What is an API, really?
-
-PoC for running a lightweight page with all the intensive stuff on remote
+PoC for running a composable API with all the processing being done via combining serverless functions.
 
 This is the main repo for **Superpowers**.
-The goal of this project is to provide
-
-
 
 
 ## Architecture

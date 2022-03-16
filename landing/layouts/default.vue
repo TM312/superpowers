@@ -11,30 +11,25 @@
 
     export default {
         computed: {
-            requests() {
-                return this.$store.$db().model("requests").exists();
+            requestsDocs() {
+                return this.$store.$db().model("request-docs").exists();
             },
         },
         async fetch() {
-            if (this.requests === false) {
+            if (this.requestsDocs === false) {
                 // Here we are stubbing the initial data. In the real world, this
                 // should be the response from the API Backend.
                 const initialData = await data();
-                this.$store.$db().model("requests").create({ data: initialData });
+                this.$store
+                    .$db()
+                    .model("request-docs")
+                    .create({ data: initialData });
             }
         },
     };
 </script>
 
 <style>
-    html {
-        height: 100%;
-    }
-
-    body {
-        min-height: 100%;
-    }
-
     .fade-enter-active,
     .fade-leave-active {
         transition: opacity 0.3s;

@@ -32,7 +32,8 @@
                     text-indigo-200
                 "
             >
-                Get computations of any kind at any scale through a consistent API.
+                Deploy and request computations of any kind at any scale through
+                a consistent API.
             </p>
         </div>
     </section>

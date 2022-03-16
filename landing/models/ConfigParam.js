@@ -1,14 +1,10 @@
-// LogType Model
+// ConfigParam Model
 
 import { Model } from '@vuex-orm/core'
 
+export default class ConfigParam extends Model {
 
-
-export default class Faq extends Model {
-
-    static entity = 'faqs'
-
-
+    static entity = 'config-params'
 
     // // Reference to base entity name.
     // static baseEntity = 'base'
@@ -19,12 +15,14 @@ export default class Faq extends Model {
       return {
         // Base
         id: this.uid(),
+        
+        // relationships
+        sample_params_public_id: this.string(''),
 
         // attributes
-        q: this.string(''),
-        a: this.string(''),
-        request_docs_public_id: this.string('')
-
+        key: this.string(''),
+        value: this.attr(null),
+        value_type: this.attr(null)
       }
     }
 }
