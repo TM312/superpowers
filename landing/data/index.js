@@ -30,7 +30,7 @@ export default async function data() {
         request_docs_public_id: 'get-round',
         public_id: 'get-round-sample-params',
         service_name: 'get_round',
-        data: "1.32, 2.35, 5.11, 71.2996",
+        data: 1.32,
         config: [
           {
             sample_params_public_id: 'get-round-sample-params',

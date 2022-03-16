@@ -9,21 +9,24 @@
                     :sample-params-public-id="sampleParams.public_id"
                 />
 
-                <div v-for="(param, i) in paramDocs" :key="i">
-                    <input-field-service-config-sample-request
-                        :param-options="param.options"
-                        :param-key="param.key"
-                        :param-name="param.name"
-                        :sample-params-public-id="sampleParams.public_id"
-                    />                    
+                <div>
+                    <div v-for="(param, i) in paramDocs" :key="i">
+                        <input-field-service-config-sample-request
+                            :param-options="param.options"
+                            :param-key="param.key"
+                            :param-name="param.name"
+                            :sample-params-public-id="sampleParams.public_id"
+                        />                    
+                    </div>
                 </div>
+
+                <button-send-sample-request
+                    :service-name="sampleParams.service_name"
+                    :service-config="sampleParams.config"
+                    :service-data="sampleParams.data"
+                />
                 
             </div>
-            <button-send-sample-request
-                :service-name="sampleParams.service_name"
-                :service-config="sampleParams.config"
-                :service-data="sampleParams.data"
-            />
         </div>
     </section>
 </template>

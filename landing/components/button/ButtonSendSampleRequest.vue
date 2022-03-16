@@ -1,11 +1,13 @@
 <template>
     <div>
+        res: {{ res }} <br><br>
         serviceName: {{ serviceName }} <br />
         serviceData: {{ serviceData }} <br />
+        serviceConfig: {{ serviceConfig }}
         <div v-for="config in serviceConfig" :key=config.id>
             {{ config.key }} : {{ config.value }}
         </div>
-        <!-- <button
+        <button
             type="button"
             class="
                 inline-flex
@@ -25,13 +27,14 @@
                 focus:ring-offset-2
                 focus:ring-indigo-500
             "
+            @click="sendRequest()"
         >
             <solid-paper-airplane-icon
                 class="h-5 w-5 mr-2 text-gray-400 transform rotate-90"
                 aria-hidden="true"
             />
             Send Request
-        </button> -->
+        </button>
     </div>
 </template>
 
@@ -52,36 +55,30 @@
                 required: true,
             },
         },
-
-        // created() {
-        //     this.$nuxt.$on("dataSelected", ($event) => {
-        //         console.log("dataSelected", $event);
-        //         this.serviceData = $event;
-        //     });
-        //     this.$nuxt.$on("configSelected", ($event) => {
-        //         console.log("configSelected > $event:", $event);
-        //         console.log("$event key:", $event.key);
-        //         console.log("$event value:", $event.value);
-
-        //         this.updateServiceConfig($event.key, $event.value);
-        //     });
-        // },
-      
-        // methods: {
-        //     updateServiceConfig(configKey, configValue) {
-        //         this.$set(this.serviceConfig, configKey, configValue);
-        //         // this.serviceConfig[configKey] = configValue;
-        //     },
-
-        //     updateServiceData(data) {
-        //         this.serviceData = data;
-        //     },
-        // },
-        // beforeDestroy() {
-        //     // removes event listener
-        //     this.$nuxt.$off("dataSelected");
-        //     this.$nuxt.$off("configSelected");
-        // },
+         data() {
+            return {
+                res: null,
+            };
+        },
+        methods: {
+            async sendRequest() {
+                const payload = {
+                   "data": [1,2.2334],
+                   "services": [
+                       {
+                           "name": this.serviceName,
+                           "config": {
+                               "decPlaces": 2
+                           }
+                       }
+                   ]
+                }
+                console.log(payload)
+                const res = await this.$axios.$post('', payload)
+                this.res = res
+              
+           }
+        },
     };
 </script>
 
