@@ -36,14 +36,14 @@
 
 ## About
 
-PoC for running a composable API with all the processing being done via combining serverless functions.
+A Proof-of-concept for a composable API that is built as modular set of serverless functions.
 
 This is the main repo for **Superpowers**.
 
 
 ## Architecture
 
-The project has three distinct components:
+The project has three components:
 1. **Lambda functions**
 
     The foundation of **Superpowers** is a set of *Lambda functions*.
@@ -118,12 +118,6 @@ Three environments are used for a staged code deployment process:
     'visualization': None
 }
 ```
-
-## Principles (ideas)
-- robust, tested services
-- extensive, well-structured documentation (open-source)
-- develop at own pace, but releases in weekly/bi-weekly cycles
-
 
 
 ## Repo Automation
