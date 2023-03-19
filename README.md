@@ -39,7 +39,7 @@ The project has three components:
 
     The frontend serving as the main entry point for potential/new customers is based on *Nuxt* using *TailwindCSS*.
 
-    The main sub dir is <a href="https://github.com/TM312/superpowers/landing/tree/master/landing">landing</a>.
+    The main sub dir is <a href="https://github.com/TM312/superpowers/tree/master/landing">landing</a>.
 
 3. **Documentation**
 
