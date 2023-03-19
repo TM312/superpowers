@@ -27,7 +27,6 @@
     </li>
     <li><a href="#architecture">Architecture</a></li>
     <li><a href="#API-structure">API Structure</a></li>
-    <li><a href="#deployment-environments">Deployment Environments</a></li>
     <li><a href="#endpoints">Endpoints</a></li>
     <li><a href="#sample-request">Sample Request</a></li>
     <li><a href="#repo-automation">Repo Automation</a></li>
@@ -72,22 +71,6 @@ The project has three components:
     It is based on *Nuxt Content > Docs Theme* using *TailwindCSS* allowing it to be written as *markdown* files.
     It is developed inside the separated and public repo named [sp_docs](https://github.com/TM312/sp_docs).
 
-
-
-## Deployment Environments
-
-Three environments are used for a staged code deployment process:
-
-
-| Name         | Address  |
-| :--------------- |:---------------|
-| dev      | *tbd* |
-| stage      | *tbd* |
-| prod      | *tbd* |
-
-
-
-<br>
 
 
 ## Endpoints
