@@ -20,9 +20,6 @@
 
 A Proof-of-concept for a composable API that is built as modular set of serverless functions.
 
-This is the main repo for **Superpowers**.
-
-
 ## Architecture
 
 The project has three components:
