@@ -78,9 +78,9 @@ The project has three components:
 | Endpoint         | Name           | Auth          | Description       |
 | :--------------- |:---------------| :--------------- |:---------------|
 | /      | Main | True | Returns the result of the functions |
-| /help      | Help | False | Provides i) general information about how to use the main endpoint and ii) specific details. |
-| /sample      | Sample | False | Returns sample data for each   |
-| /statistics      | Statistics | False | Returns statistics for each service.|
+| /help (inactive)      | Help | False | Provides i) general information about how to use the main endpoint and ii) specific details. |
+| /sample  (inactive)    | Sample | False | Returns sample data for each   |
+| /statistics   (inactive)   | Statistics | False | Returns statistics for each service.|
 
 
 ## Sample Request
