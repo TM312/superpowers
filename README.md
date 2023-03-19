@@ -1,21 +1,4 @@
-# S-U-P-E-R-P-O-W-E-R-S
-
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <!-- <a href="#">
-    <img src="images/logo.png" alt="Superpowers Logo" width="197" height="62">
-  </a> -->
-
-  <h3 align="center">S-U-P-E-R-P-O-W-E-R-S</h3>
-
-  <p align="center">
-    ML Services as API calls
-    <br />
-    <a href="https://github.com/TM312/superpowers/issues"><strong>Report Bug/Request feature »</strong></a>
-  </p>
-</p>
-
+# Superpowers
 
 
 <!-- TABLE OF CONTENTS -->
